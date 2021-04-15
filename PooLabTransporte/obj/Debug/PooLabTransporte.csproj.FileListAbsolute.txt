@@ -1,0 +1,7 @@
+C:\Users\harri\source\repos\DemoPoo01\PooLabTransporte\bin\Debug\PooLabTransporte.exe.config
+C:\Users\harri\source\repos\DemoPoo01\PooLabTransporte\bin\Debug\PooLabTransporte.exe
+C:\Users\harri\source\repos\DemoPoo01\PooLabTransporte\bin\Debug\PooLabTransporte.pdb
+C:\Users\harri\source\repos\DemoPoo01\PooLabTransporte\obj\Debug\PooLabTransporte.csproj.CoreCompileInputs.cache
+C:\Users\harri\source\repos\DemoPoo01\PooLabTransporte\obj\Debug\PooLabTransporte.exe
+C:\Users\harri\source\repos\DemoPoo01\PooLabTransporte\obj\Debug\PooLabTransporte.pdb
+C:\Users\harri\source\repos\DemoPoo01\PooLabTransporte\obj\Debug\PooLabTransporte.csprojAssemblyReference.cache
