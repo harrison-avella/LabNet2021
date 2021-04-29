@@ -8,8 +8,5 @@ namespace Lab.Demo.EF.UI
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }
