@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab.Demo.EF.UI
+namespace Lab.EF.UI
 {
     class Program
     {
+        static void Main(string[] args)
+        {
+        }
     }
 }

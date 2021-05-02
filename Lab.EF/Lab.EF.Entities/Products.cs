@@ -1,4 +1,4 @@
-namespace Lab.Demo.EF.Data
+namespace Lab.EF.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -32,5 +32,7 @@ namespace Lab.Demo.EF.Data
         public short? ReorderLevel { get; set; }
 
         public bool Discontinued { get; set; }
+
+        public virtual Categories Categories { get; set; }
     }
 }

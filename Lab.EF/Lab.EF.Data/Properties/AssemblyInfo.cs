@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Lab.Demo.EF.Logic")]
+[assembly: AssemblyTitle("Lab.EF.Data")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Lab.Demo.EF.Logic")]
+[assembly: AssemblyProduct("Lab.EF.Data")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4b1dea3b-ed54-4b6b-8e68-a5e404d47d5d")]
+[assembly: Guid("45f0636c-6a1b-40ce-b6c6-93e3b8cad3a3")]
 
 // Version information for an assembly consists of the following four values:
 //
