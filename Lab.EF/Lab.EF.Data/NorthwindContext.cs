@@ -8,14 +8,12 @@ namespace Lab.EF.Data
 {
     public partial class NorthwindContext : DbContext
     {
-        public NorthwindContext()
-            : base("name=NorthwindConnection")
+        public NorthwindContext() : base("name=NorthwindConnection")
         {
         }
 
         public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<Customers> Customers { get; set; }
-        public virtual DbSet<Employees> Employees { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Products> Products { get; set; }
 
@@ -24,11 +22,6 @@ namespace Lab.EF.Data
             modelBuilder.Entity<Customers>()
                 .Property(e => e.CustomerID)
                 .IsFixedLength();
-
-            modelBuilder.Entity<Employees>()
-                .HasMany(e => e.Employees1)
-                .WithOptional(e => e.Employees2)
-                .HasForeignKey(e => e.ReportsTo);
 
             modelBuilder.Entity<Orders>()
                 .Property(e => e.CustomerID)
