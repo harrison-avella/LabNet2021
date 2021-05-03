@@ -27,7 +27,7 @@ namespace Lab.EF.UI
 
 
 
-            //Agregar producto
+            //Agregar Consumidor
             try
             {
                 customersLogic.Add(new Customers
