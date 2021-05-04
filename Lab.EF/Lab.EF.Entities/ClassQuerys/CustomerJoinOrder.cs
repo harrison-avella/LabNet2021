@@ -9,8 +9,10 @@ namespace Lab.EF.Entities.ClassQuerys
     public class CustomerJoinOrder
     {
         public string CustomerID { get; set; }
+        public string ContactName { get; set; }
         public string Region { get; set; }
         public DateTime? OrderDate { get; set; }
+        public int CantidadOrdenes { get; set; }
 
     }
 }

@@ -8,77 +8,41 @@ using System.Threading.Tasks;
 
 namespace Lab.EF.Logic
 {
-    public class ProductsLogic : BaseLogic, IABMLogic<Products, int>
+    public class ProductsLogic : BaseLogic
     {
-        public List<Products> ProductsOutOfStock()
+        public IEnumerable<Products> ProductsOutOfStock()
         {
             return context.Products.Where(p => p.UnitsInStock == 0).ToList();
         }
 
-        public List<Products> ProductsStockCostMore3()
+        public IEnumerable<Products> ProductsStockCostMore3()
         {
             return context.Products.Where(p => p.UnitsInStock > 0).Where(p => p.UnitPrice > 3).ToList();
         }
 
         public Products FirstProductoByID(int id)
         {
-            var query = from pro in context.Products
-                        where pro.ProductID == id
-                        select pro;
-            return query.First();
+            return (from pro in context.Products
+                    where pro.ProductID == id
+                    select pro)
+                    .First();
         }
 
-
-        #region
-        public List<Products> GetAll()
+        public IEnumerable<Products> ProductsOrderByStock()
         {
-            return context.Products.ToList();
+            return context.Products.OrderByDescending(p => p.UnitsInStock);
         }
 
-        public Products GetOne(int id)
+        public IEnumerable<Products> ProductsOrderByName()
         {
-            return context.Products.First(p => p.ProductID.Equals(id));
+            return context.Products.OrderBy(p => p.ProductName);
         }
 
-        public void Add(Products newProduct)
+        public Products FirstProduct()
         {
-            context.Products.Add(newProduct);
-            context.SaveChanges();
+            return (from pro in context.Products
+                    select pro)
+                    .First();
         }
-
-        public void Delete(int id)
-        {
-
-            var productDelete = context.Products.Find(id);
-
-            if (productDelete == null) throw new Exception("No se pudo eliminar producto");
-
-            context.Products.Remove(productDelete);
-            context.SaveChanges();
-
-
-        }
-
-        public void Update(Products product)
-        {
-
-            var productUpdate = context.Products.Find(product.ProductID);
-
-            if (productUpdate == null) throw new Exception("No se pudo actualizar producto");
-
-            productUpdate.ProductName = product.ProductName;
-            productUpdate.SupplierID = product.SupplierID;
-            productUpdate.CategoryID = product.CategoryID;
-            productUpdate.QuantityPerUnit = product.QuantityPerUnit;
-            productUpdate.UnitPrice = product.UnitPrice;
-            productUpdate.UnitsInStock = product.UnitsInStock;
-            productUpdate.UnitsOnOrder = product.UnitsOnOrder;
-            productUpdate.ReorderLevel = product.ReorderLevel;
-            productUpdate.Discontinued = product.Discontinued;
-
-            context.SaveChanges();
-
-        }
-        #endregion
     }
 }

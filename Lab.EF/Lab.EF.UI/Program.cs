@@ -14,6 +14,9 @@ namespace Lab.EF.UI
     {
         static void Main(string[] args)
         {
+
+            //Solo capture excepcion para el ejercicio 5 donde era explicito que daba vacio(null), en las demas no caputure para hacer mas legible el codigo
+
             var customersLogic = new CustomersLogic();
             var productsLogic = new ProductsLogic();
             var joinnerLogic = new JoinnerLogic();
@@ -53,136 +56,103 @@ namespace Lab.EF.UI
                 switch (opcion)
                 {
                     case 1:
-                        try
-                        {
-                            var query = customersLogic.FirstCustomerByCompanyName("Alfreds Futterkiste");
-                            Console.WriteLine($"{query.CompanyName}");
-                        }
-                        catch (InvalidOperationException e)
-                        {
-                            Console.WriteLine($"Error - {e.Message}");
-                        }
-                        Console.ReadLine();
+                        var query = customersLogic.FirstCustomerByCompanyName("Alfreds Futterkiste");
+                        Console.WriteLine($"{query.CompanyName}");
                         break;
                     case 2:
-                        try
+                        var query2 = productsLogic.ProductsOutOfStock();
+                        foreach (var item in query2)
                         {
-                            var query = productsLogic.ProductsOutOfStock();
-                            foreach (var item in query)
-                            {
-                                Console.WriteLine($"Stock: {item.UnitsInStock} - {item.ProductName} - {item.QuantityPerUnit}");
-                            }
+                            Console.WriteLine($"Stock: {item.UnitsInStock} - {item.ProductName} - {item.QuantityPerUnit}");
                         }
-                        catch (InvalidOperationException e)
-                        {
-                            Console.WriteLine($"Error - {e.Message}");
-                        }
-                        Console.ReadLine();
                         break;
                     case 3:
-                        try
+                        var query3 = productsLogic.ProductsStockCostMore3();
+                        foreach (var item in query3)
                         {
-                            var query = productsLogic.ProductsStockCostMore3();
-                            foreach (var item in query)
-                            {
-                                Console.WriteLine($"Nombre: {item.ProductName} - Precio: {item.UnitPrice} - Cantidad: {item.UnitsInStock}");
-                            }
+                            Console.WriteLine($"Nombre: {item.ProductName} - Precio: {item.UnitPrice} - Cantidad: {item.UnitsInStock}");
                         }
-                        catch (InvalidOperationException e)
-                        {
-                            Console.WriteLine($"Error - {e.Message}");
-                        }
-                        Console.ReadLine();
                         break;
                     case 4:
-                        try
+                        var query4 = customersLogic.CustomersOfWashington();
+                        foreach (var item in query4)
                         {
-                            var query = customersLogic.CustomersOfWashington();
-                            foreach (var item in query)
-                            {
-                                Console.WriteLine($"Nombre: {item.CompanyName} - Ciudad: {item.City} - Estado: {item.Region}");
-                            }
+                            Console.WriteLine($"Nombre: {item.CompanyName} - Ciudad: {item.City} - Estado: {item.Region}");
                         }
-                        catch (InvalidOperationException e)
-                        {
-                            Console.WriteLine($"Error - {e.Message}");
-                        }
-                        Console.ReadLine();
                         break;
                     case 5:
                         try
                         {
-                            var query = productsLogic.FirstProductoByID(789);
-                            Console.WriteLine($"{query.ProductName}");
+                            var query5 = productsLogic.FirstProductoByID(789);
+                            Console.WriteLine($"{query5.ProductName}");
                         }
                         catch (InvalidOperationException e)
                         {
                             Console.WriteLine($"No existe o paso algo muy malo - {e.Message}");
                         }
-                        Console.ReadLine();
                         break;
                     case 6:
-                        try
+                        var query6 = customersLogic.CustomersNameUPPERlower();
+                        foreach (var item in query6)
                         {
-                            var query = customersLogic.CustomersNameUPPERlower();
-                            foreach (var item in query)
-                            {
-                                Console.WriteLine($"Mayuscula: {item.NameUpper} - minuscula: {item.NameLower}");
-                            }
+                            Console.WriteLine($"Mayuscula: {item.NameUpper} - minuscula: {item.NameLower}");
                         }
-                        catch (InvalidOperationException e)
-                        {
-                            Console.WriteLine($"Error - {e.Message}");
-                        }
-                        Console.ReadLine();
                         break;
                     case 7:
-                        try
+                        var query7 = joinnerLogic.CustomerJoinOrders();
+                        foreach (var item in query7)
                         {
-                            var query = joinnerLogic.CustomerJoinOrders();
-                            foreach (var item in query)
-                            {
-                                Console.WriteLine($"Id: {item.CustomerID} - Estado: {item.Region} - Fecha: {item.OrderDate}");
-                            }
+                            Console.WriteLine($"Id: {item.CustomerID} - Estado: {item.Region} - Fecha: {item.OrderDate}");
                         }
-                        catch (InvalidOperationException e)
-                        {
-                            Console.WriteLine($"Error - {e.Message}");
-                        }
-                        Console.ReadLine();
                         break;
-
                     case 8:
-                        try
+
+                        var query8 = customersLogic.CustomersOfWashingtonFirstThree();
+                        foreach (var item in query8)
                         {
-                            var query = customersLogic.CustomersOfWashingtonFirstThree();
-                            foreach (var item in query)
-                            {
-                                Console.WriteLine($"Nombre: {item.CompanyName} - Ciudad: {item.City} - Estado: {item.Region}");
-                            }
+                            Console.WriteLine($"Nombre: {item.CompanyName} - Ciudad: {item.City} - Estado: {item.Region}");
                         }
-                        catch (InvalidOperationException e)
-                        {
-                            Console.WriteLine($"Error - {e.Message}");
-                        }
-                        Console.ReadLine();
                         break;
-
                     case 9:
-
-
-
+                        var query9 = productsLogic.ProductsOrderByStock();
+                        foreach (var item in query9)
+                        {
+                            Console.WriteLine($"Nombre: {item.ProductName}");
+                        }
+                        break;
+                    case 10:
+                        var query10 = productsLogic.ProductsOrderByStock();
+                        foreach (var item in query10)
+                        {
+                            Console.WriteLine($"Nombre: {item.ProductName} - Stock: {item.UnitsInStock}");
+                        }
+                        break;
+                    case 11:
+                        var query11 = joinnerLogic.CategoryJoinProduct();
+                        foreach (var item in query11)
+                        {
+                            Console.WriteLine($"Categoria: {item.CategoryName} - Producto: {item.ProductName}");
+                        }
+                        break;
+                    case 12:
+                        var query12 = productsLogic.FirstProduct();
+                        Console.WriteLine($"{query12.ProductName}");
+                        break;
+                    case 13:
+                        var query13 = joinnerLogic.CustomerCantOrders();
+                        foreach (var item in query13)
+                        {
+                            Console.WriteLine($"Id: {item.CustomerID} - Nombre: {item.ContactName} - Cantidad: {item.CantidadOrdenes}");
+                        }
+                        break;
                     case 0:
                         Console.WriteLine("Finalizando, gracias.");
                         break;
-
                     default:
                         Console.WriteLine("No es una opcion valida");
                         break;
-
                 }
                 Console.ReadKey();
-
             } while (opcion != 0);
         }
     }

@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Categories.cs" />
+    <Compile Include="ClassQuerys\CategoryJoinProduct.cs" />
     <Compile Include="ClassQuerys\CustomerJoinOrder.cs" />
     <Compile Include="ClassQuerys\CustomerName.cs" />
     <Compile Include="Customers.cs" />
