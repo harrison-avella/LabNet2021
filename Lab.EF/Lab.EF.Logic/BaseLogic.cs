@@ -1,4 +1,5 @@
 ﻿using Lab.EF.Data;
+using Lab.EF.Entities.ClassQuerys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +18,24 @@ namespace Lab.EF.Logic
             context = new NorthwindContext();
         }
 
-        /*   public List<CustomerJoinOrder> CustomerJoinOrders()
-           {
-               return 
-           }
-        */
+        public List<CustomerJoinOrder> CustomerJoinOrders()
+        {
+            var query = from cus in context.Customers
+                        join ord in context.Orders
+                        on cus.CustomerID equals ord.CustomerID
+                        where cus.Region.Equals("WA") &&
+                        ord.OrderDate > new DateTime(1997, 1, 1)
+                        orderby ord.OrderDate
+                        select new CustomerJoinOrder
+                        {
+                            CustomerID = cus.CustomerID,
+                            Region = cus.Region,
+                            OrderDate = ord.OrderDate
+                        };
+
+            return query.ToList();
+        }
+
 
     }
 }

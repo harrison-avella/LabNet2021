@@ -16,6 +16,7 @@ namespace Lab.EF.UI
         {
             var customersLogic = new CustomersLogic();
             var productsLogic = new ProductsLogic();
+            var baseLogic = new BaseLogic();
 
             int opcion = -1;
             do
@@ -138,7 +139,20 @@ namespace Lab.EF.UI
                         Console.ReadLine();
                         break;
                     case 7:
-
+                        try
+                        {
+                            var query = baseLogic.CustomerJoinOrders();
+                            foreach (var item in query)
+                            {
+                                Console.WriteLine($"Id: {item.CustomerID} - Estado: {item.Region} - Fecha: {item.OrderDate}");
+                            }
+                        }
+                        catch (InvalidOperationException e)
+                        {
+                            Console.WriteLine($"Error - {e.Message}");
+                        }
+                        Console.ReadLine();
+                        break;
 
                     case 8:
 
