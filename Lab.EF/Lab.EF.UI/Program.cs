@@ -17,81 +17,112 @@ namespace Lab.EF.UI
             ProductsLogic productsLogic = new ProductsLogic();
             CustomersLogic customersLogic = new CustomersLogic();
 
-            //Mostrar consumidores, nombre de compañia y pais
-            foreach (var customer in customersLogic.GetAll())
+            int opcion = -1;
+            do
             {
-                Console.WriteLine($"{customer.CompanyName} - {customer.Country}");
-            }
+                Console.Clear(); ;
+                Console.WriteLine("Ejercicio LINQ");
+                Console.WriteLine("Precione un numero");
+                Console.WriteLine("1. Mostrar consumidores, nombre de compañia y pais");
+                Console.WriteLine("2. Agregue un consumidor ;)");
+                Console.WriteLine("3. Agrega un producto e imprime la lista");
+                Console.WriteLine("4. Actualiza un producto y lo imprime");
+                Console.WriteLine("5. Borrar producto y ver cambios");
+                Console.WriteLine("0.Salir");
+                Console.WriteLine(" ");
+                Console.WriteLine("Seleccione Opción:");
 
-            Console.ReadLine();
-
-
-
-            //Agregar Consumidor
-            try
-            {
-                customersLogic.Add(new Customers
+                try
                 {
-                    CustomerID = "CHARRO",
-                    CompanyName = "La Manzana",
-                    Country = "Mexico"
-                });
-
-            }
-
-            catch (DbEntityValidationException e)
-            {
-                Console.WriteLine("No se pudo agregar el consumidor");
-            }
-            Console.ReadLine();
-
-
-            //Agregar producto
-            productsLogic.Add(new Products
-            {
-                ProductName = "Zapasho",
-                UnitPrice = 200
-            });
-
-            foreach (var product in productsLogic.GetAll())
-            {
-                Console.WriteLine($"{product.ProductName} - {product.UnitPrice}");
-            }
-            Console.ReadLine();
-
-            //Actualizar producto
-            try
-            {
-                productsLogic.Update(new Products
-                {
-                    ProductID = 10,
-                    ProductName = "Carne",
-                    UnitPrice = 2500
-                });
-                var aProduct = productsLogic.GetOne(10);
-                Console.WriteLine($"{aProduct.ProductName} - {aProduct.UnitPrice}");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-
-            }
-            Console.ReadLine();
-
-            //Borrar producto
-            try
-            {
-                productsLogic.Delete(82);
-                foreach (var product in productsLogic.GetAll())
-                {
-                    Console.WriteLine($"{product.ProductID} - {product.ProductName} - {product.UnitPrice}");
+                    opcion = Convert.ToInt32(Console.ReadLine());
                 }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-            Console.ReadLine();
+                catch (FormatException e)
+                {
+                    Console.WriteLine($"Ingresaste mal la opcion - {e.Message}");
+                }
+
+                switch (opcion)
+                {
+                    case 1:
+                        //Mostrar consumidores, nombre de compañia y pais
+                        foreach (var customer in customersLogic.GetAll())
+                        {
+                            Console.WriteLine($"{customer.CompanyName} - {customer.Country}");
+                        }
+                        break;
+                    case 2:
+                        //Agregar Consumidor
+                        try
+                        {
+                            customersLogic.Add(new Customers
+                            {
+                                CustomerID = "CHARRO",
+                                CompanyName = "La Manzana",
+                                Country = "Mexico"
+                            });
+                        }
+                        catch (DbEntityValidationException e)
+                        {
+                            Console.WriteLine("No se pudo agregar el consumidor");
+                        }
+                        Console.ReadLine();
+                        break;
+                    case 3:
+                        //Agregar producto
+                        productsLogic.Add(new Products
+                        {
+                            ProductName = "Zapasho",
+                            UnitPrice = 200
+                        });
+                        foreach (var product in productsLogic.GetAll())
+                        {
+                            Console.WriteLine($"{product.ProductName} - {product.UnitPrice}");
+                        }
+                        break;
+                    case 4:
+                        //Actualizar producto
+                        try
+                        {
+                            productsLogic.Update(new Products
+                            {
+                                ProductID = 10,
+                                ProductName = "Carne",
+                                UnitPrice = 2500
+                            });
+                            var aProduct = productsLogic.GetOne(10);
+                            Console.WriteLine($"{aProduct.ProductID} - {aProduct.ProductName} - {aProduct.UnitPrice}");
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e);
+
+                        }
+                        break;
+                    case 5:
+                        //Borrar producto
+                        try
+                        {
+                            productsLogic.Delete(82);
+                            foreach (var product in productsLogic.GetAll())
+                            {
+                                Console.WriteLine($"{product.ProductID} - {product.ProductName} - {product.UnitPrice}");
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e);
+                        }
+                        Console.ReadLine();
+                        break;
+                    case 0:
+                        Console.WriteLine("Finalizando, gracias.");
+                        break;
+                    default:
+                        Console.WriteLine("No es una opcion valida");
+                        break;
+                }
+                Console.ReadKey();
+            } while (opcion != 0);
         }
 
     }
