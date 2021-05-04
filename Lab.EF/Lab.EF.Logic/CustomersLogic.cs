@@ -70,5 +70,14 @@ namespace Lab.EF.Logic
 
         }
 
+        public List<Customers> CustomersOfWashingtonFirstThree()
+        {
+            var query = (from cus in context.Customers
+                         where cus.Region.Equals("WA")
+                         select cus)
+                         .Take(3);
+            return query.ToList();
+        }
+
     }
 }

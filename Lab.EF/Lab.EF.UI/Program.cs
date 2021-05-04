@@ -16,8 +16,7 @@ namespace Lab.EF.UI
         {
             var customersLogic = new CustomersLogic();
             var productsLogic = new ProductsLogic();
-            var baseLogic = new BaseLogic();
-
+            var joinnerLogic = new JoinnerLogic();
             int opcion = -1;
             do
             {
@@ -31,9 +30,12 @@ namespace Lab.EF.UI
                 Console.WriteLine("5. Query para devolver el primer elemento o nulo de una lista de productos donde el ID de producto sea igual a 789");
                 Console.WriteLine("6. Query para devolver los nombres de los Customers. Mostrarlos en Mayuscula y en Minuscula.");
                 Console.WriteLine("7. Query para devolver Join entre Customers y Orders donde los customers sean de Washington y la fecha de orden sea mayor a 1/1/1997.");
-                Console.WriteLine("8.");
-                Console.WriteLine("9.");
-                Console.WriteLine("10.");
+                Console.WriteLine("8. Query para devolver los primeros 3 Customers de Washington");
+                Console.WriteLine("9. Query para devolver lista de productos ordenados por nombre");
+                Console.WriteLine("10.Query para devolver lista de productos ordenados por unit in stock de mayor a menor.");
+                Console.WriteLine("11.Query para devolver las distintas categorías asociadas a los productos");
+                Console.WriteLine("12.Query para devolver el primer elemento de una lista de productos");
+                Console.WriteLine("13.Query para devolver los customer con la cantidad de ordenes asociadas");
                 Console.WriteLine("0.Salir");
                 Console.WriteLine(" ");
                 Console.WriteLine("Seleccione Opción:");
@@ -47,8 +49,6 @@ namespace Lab.EF.UI
                 {
                     Console.WriteLine($"Ingresaste mal la opcion - {e.Message}");
                 }
-
-
 
                 switch (opcion)
                 {
@@ -108,8 +108,6 @@ namespace Lab.EF.UI
                             Console.WriteLine($"Error - {e.Message}");
                         }
                         Console.ReadLine();
-
-
                         break;
                     case 5:
                         try
@@ -141,7 +139,7 @@ namespace Lab.EF.UI
                     case 7:
                         try
                         {
-                            var query = baseLogic.CustomerJoinOrders();
+                            var query = joinnerLogic.CustomerJoinOrders();
                             foreach (var item in query)
                             {
                                 Console.WriteLine($"Id: {item.CustomerID} - Estado: {item.Region} - Fecha: {item.OrderDate}");
@@ -155,7 +153,20 @@ namespace Lab.EF.UI
                         break;
 
                     case 8:
-
+                        try
+                        {
+                            var query = customersLogic.CustomersOfWashingtonFirstThree();
+                            foreach (var item in query)
+                            {
+                                Console.WriteLine($"Nombre: {item.CompanyName} - Ciudad: {item.City} - Estado: {item.Region}");
+                            }
+                        }
+                        catch (InvalidOperationException e)
+                        {
+                            Console.WriteLine($"Error - {e.Message}");
+                        }
+                        Console.ReadLine();
+                        break;
 
                     case 9:
 
