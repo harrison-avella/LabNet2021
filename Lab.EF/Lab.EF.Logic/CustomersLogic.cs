@@ -1,4 +1,5 @@
 ﻿using Lab.EF.Entities;
+using Lab.EF.Entities.ClassQuerys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace Lab.EF.Logic
 {
     public class CustomersLogic : BaseLogic, IABMLogic<Customers, string>
     {
+        #region
         public List<Customers> GetAll()
         {
             return context.Customers.ToList();
@@ -43,7 +45,30 @@ namespace Lab.EF.Logic
 
             context.SaveChanges();
         }
+        #endregion
+        public Customers FirstCustomerByCompanyName(String companyName)
+        {
+            return context.Customers.Where(c => c.CompanyName.Equals(companyName)).First();
+        }
 
+        public List<Customers> CustomersOfWashington()
+        {
+            var query = from cus in context.Customers
+                        where cus.Region.Equals("WA")
+                        select cus;
+            return query.ToList();
+        }
+        public List<CustomerName> CustomersNameUPPERlower()
+        {
+            var query = from cus in context.Customers
+                        select new CustomerName
+                        {
+                            NameUpper = cus.CompanyName.ToUpper(),
+                            NameLower = cus.CompanyName.ToLower()
+                        };
+            return query.ToList();
+
+        }
 
     }
 }

@@ -10,6 +10,26 @@ namespace Lab.EF.Logic
 {
     public class ProductsLogic : BaseLogic, IABMLogic<Products, int>
     {
+        public List<Products> ProductsOutOfStock()
+        {
+            return context.Products.Where(p => p.UnitsInStock == 0).ToList();
+        }
+
+        public List<Products> ProductsStockCostMore3()
+        {
+            return context.Products.Where(p => p.UnitsInStock > 0).Where(p => p.UnitPrice > 3).ToList();
+        }
+
+        public Products FirstProductoByID(int id)
+        {
+            var query = from pro in context.Products
+                        where pro.ProductID == id
+                        select pro;
+            return query.First();
+        }
+
+
+        #region
         public List<Products> GetAll()
         {
             return context.Products.ToList();
@@ -59,5 +79,6 @@ namespace Lab.EF.Logic
             context.SaveChanges();
 
         }
+        #endregion
     }
 }

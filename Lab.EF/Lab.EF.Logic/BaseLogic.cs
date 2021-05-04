@@ -17,5 +17,11 @@ namespace Lab.EF.Logic
             context = new NorthwindContext();
         }
 
+        /*   public List<CustomerJoinOrder> CustomerJoinOrders()
+           {
+               return 
+           }
+        */
+
     }
 }

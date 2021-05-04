@@ -9,6 +9,7 @@ namespace Lab.EF.Logic
 {
     public class CategoriesLogic : BaseLogic, IABMLogic<Categories, int>
     {
+        #region
         public List<Categories> GetAll()
         {
             return context.Categories.ToList();
@@ -39,7 +40,7 @@ namespace Lab.EF.Logic
 
             context.SaveChanges();
         }
-
+        #endregion
 
     }
 }

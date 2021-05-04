@@ -1,4 +1,5 @@
-﻿using Lab.EF.Entities;
+﻿using Lab.EF.Data;
+using Lab.EF.Entities;
 using Lab.EF.Logic;
 using System;
 using System.Collections.Generic;
@@ -13,86 +14,168 @@ namespace Lab.EF.UI
     {
         static void Main(string[] args)
         {
+            var customersLogic = new CustomersLogic();
+            var productsLogic = new ProductsLogic();
 
-            ProductsLogic productsLogic = new ProductsLogic();
-            CustomersLogic customersLogic = new CustomersLogic();
-
-            //Mostrar consumidores, nombre de compañia y pais
-            foreach (var customer in customersLogic.GetAll())
+            int opcion = -1;
+            do
             {
-                Console.WriteLine($"{customer.CompanyName} - {customer.Country}");
-            }
+                Console.Clear(); ;
+                Console.WriteLine("Ejercicio LINQ");
+                Console.WriteLine("Precione el numero de ejercicio para hacer la respectiva consulta");
+                Console.WriteLine("1. Query para devolver objeto customer");
+                Console.WriteLine("2. Query para devolver todos los productos sin stock");
+                Console.WriteLine("3. Query para devolver todos los productos que tienen stock y que cuestan más de 3 por unidad");
+                Console.WriteLine("4. Query para devolver todos los customers de Washington");
+                Console.WriteLine("5. Query para devolver el primer elemento o nulo de una lista de productos donde el ID de producto sea igual a 789");
+                Console.WriteLine("6. Query para devolver los nombres de los Customers. Mostrarlos en Mayuscula y en Minuscula.");
+                Console.WriteLine("7. Query para devolver Join entre Customers y Orders donde los customers sean de Washington y la fecha de orden sea mayor a 1/1/1997.");
+                Console.WriteLine("8.");
+                Console.WriteLine("9.");
+                Console.WriteLine("10.");
+                Console.WriteLine("0.Salir");
+                Console.WriteLine(" ");
+                Console.WriteLine("Seleccione Opción:");
 
-            Console.ReadLine();
 
-
-
-            //Agregar Consumidor
-            try
-            {
-                customersLogic.Add(new Customers
+                try
                 {
-                    CustomerID = "CHARRO",
-                    CompanyName = "La Manzana",
-                    Country = "Mexico"
-                });
-
-            }
-
-            catch (DbEntityValidationException e)
-            {
-                Console.WriteLine("No se pudo agregar el consumidor");
-            }
-            Console.ReadLine();
-
-
-            //Agregar producto
-            productsLogic.Add(new Products
-            {
-                ProductName = "Zapasho",
-                UnitPrice = 200
-            });
-
-            foreach (var product in productsLogic.GetAll())
-            {
-                Console.WriteLine($"{product.ProductName} - {product.UnitPrice}");
-            }
-            Console.ReadLine();
-
-            //Actualizar producto
-            try
-            {
-                productsLogic.Update(new Products
-                {
-                    ProductID = 10,
-                    ProductName = "Carne",
-                    UnitPrice = 2500
-                });
-                var aProduct = productsLogic.GetOne(10);
-                Console.WriteLine($"{aProduct.ProductName} - {aProduct.UnitPrice}");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-
-            }
-            Console.ReadLine();
-
-            //Borrar producto
-            try
-            {
-                productsLogic.Delete(82);
-                foreach (var product in productsLogic.GetAll())
-                {
-                    Console.WriteLine($"{product.ProductID} - {product.ProductName} - {product.UnitPrice}");
+                    opcion = Convert.ToInt32(Console.ReadLine());
                 }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-            Console.ReadLine();
+                catch (FormatException e)
+                {
+                    Console.WriteLine($"Ingresaste mal la opcion - {e.Message}");
+                }
+
+
+
+                switch (opcion)
+                {
+                    case 1:
+                        try
+                        {
+                            var query = customersLogic.FirstCustomerByCompanyName("Alfreds Futterkiste");
+                            Console.WriteLine($"{query.CompanyName}");
+                        }
+                        catch (InvalidOperationException e)
+                        {
+                            Console.WriteLine($"Error - {e.Message}");
+                        }
+                        Console.ReadLine();
+                        break;
+                    case 2:
+                        try
+                        {
+                            var query = productsLogic.ProductsOutOfStock();
+                            foreach (var item in query)
+                            {
+                                Console.WriteLine($"Stock: {item.UnitsInStock} - {item.ProductName} - {item.QuantityPerUnit}");
+                            }
+                        }
+                        catch (InvalidOperationException e)
+                        {
+                            Console.WriteLine($"Error - {e.Message}");
+                        }
+                        Console.ReadLine();
+                        break;
+                    case 3:
+                        try
+                        {
+                            var query = productsLogic.ProductsStockCostMore3();
+                            foreach (var item in query)
+                            {
+                                Console.WriteLine($"Nombre: {item.ProductName} - Precio: {item.UnitPrice} - Cantidad: {item.UnitsInStock}");
+                            }
+                        }
+                        catch (InvalidOperationException e)
+                        {
+                            Console.WriteLine($"Error - {e.Message}");
+                        }
+                        Console.ReadLine();
+                        break;
+                    case 4:
+                        try
+                        {
+                            var query = customersLogic.CustomersOfWashington();
+                            foreach (var item in query)
+                            {
+                                Console.WriteLine($"Nombre: {item.CompanyName} - Ciudad: {item.City} - Estado: {item.Region}");
+                            }
+                        }
+                        catch (InvalidOperationException e)
+                        {
+                            Console.WriteLine($"Error - {e.Message}");
+                        }
+                        Console.ReadLine();
+
+
+                        break;
+                    case 5:
+                        try
+                        {
+                            var query = productsLogic.FirstProductoByID(789);
+                            Console.WriteLine($"{query.ProductName}");
+                        }
+                        catch (InvalidOperationException e)
+                        {
+                            Console.WriteLine($"No existe o paso algo muy malo - {e.Message}");
+                        }
+                        Console.ReadLine();
+                        break;
+                    case 6:
+                        try
+                        {
+                            var query = customersLogic.CustomersNameUPPERlower();
+                            foreach (var item in query)
+                            {
+                                Console.WriteLine($"Mayuscula: {item.NameUpper} - minuscula: {item.NameLower}");
+                            }
+                        }
+                        catch (InvalidOperationException e)
+                        {
+                            Console.WriteLine($"Error - {e.Message}");
+                        }
+                        Console.ReadLine();
+                        break;
+                    case 7:
+
+
+                    case 8:
+
+
+                    case 9:
+
+
+
+                    case 0:
+                        Console.WriteLine("Finalizando, gracias.");
+                        break;
+
+                    default:
+                        Console.WriteLine("No es una opcion valida");
+                        break;
+
+                }
+                Console.ReadKey();
+
+            } while (opcion != 0);
         }
+
+        /* var innerJoin = from s in studentList // outer sequence
+                            join st in standardList //inner sequence 
+                            on s.StandardID equals st.StandardID // key selector 
+
+
+            */
+        /* var list = new List<String>();
+         foreach (var item in query)
+         {
+             list.Add($"Mayuscula: {item.ProductName.ToUpper()}");
+         }
+         return list;*/
+        //return query.First();
+
+
 
     }
 }
