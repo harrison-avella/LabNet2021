@@ -21,7 +21,7 @@ namespace Lab.EF.UI
             do
             {
                 Console.Clear(); ;
-                Console.WriteLine("Ejercicio LINQ");
+                Console.WriteLine("Ejercicio Entity");
                 Console.WriteLine("Precione un numero");
                 Console.WriteLine("1. Mostrar consumidores, nombre de compañia y pais");
                 Console.WriteLine("2. Agregue un consumidor ;)");
