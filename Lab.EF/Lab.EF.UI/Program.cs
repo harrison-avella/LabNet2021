@@ -174,22 +174,5 @@ namespace Lab.EF.UI
 
             } while (opcion != 0);
         }
-
-        /* var innerJoin = from s in studentList // outer sequence
-                            join st in standardList //inner sequence 
-                            on s.StandardID equals st.StandardID // key selector 
-
-
-            */
-        /* var list = new List<String>();
-         foreach (var item in query)
-         {
-             list.Add($"Mayuscula: {item.ProductName.ToUpper()}");
-         }
-         return list;*/
-        //return query.First();
-
-
-
     }
 }
