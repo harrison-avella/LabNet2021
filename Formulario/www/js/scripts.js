@@ -16,7 +16,6 @@ $(document).ready(function () {
         return valido;
     }
 
-
     $('#enviar').click(function () {
         if (validarCampos()) {
             alert("Solicitud realizada con exito");
@@ -24,5 +23,16 @@ $(document).ready(function () {
             alert("Por favor llena los datos")
         };
     });
-
-})
+    
+    $("#limpiar").click(function () {
+        limpiar();
+      });
+      
+      function limpiar() {
+        $("#nombre").val("");
+        $("#apellido").val("");
+        $("#edad").val("");
+        $("#empresa").val("");
+      }
+      
+});
