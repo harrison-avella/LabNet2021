@@ -1,0 +1,26 @@
+﻿@model List<Lab.EF.Entities.Region>
+
+@{
+    ViewBag.Title = "Region Page";
+}
+
+<h1>Hola soy el Index de Region</h1>
+
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Description</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var region in Model)
+        {
+            <tr>
+                <th scope="row">@region.RegionID</th>
+                <td>@region.RegionDescription</td>
+            </tr>   
+        }
+    </tbody>
+</table>

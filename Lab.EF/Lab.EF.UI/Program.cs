@@ -63,7 +63,7 @@ namespace Lab.EF.UI
                         }
                         catch (DbEntityValidationException e)
                         {
-                            Console.WriteLine("No se pudo agregar el consumidor");
+                            Console.WriteLine($"No se pudo agregar el consumidor {e.Message}");
                         }
                         Console.ReadLine();
                         break;
