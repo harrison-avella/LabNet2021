@@ -1,0 +1,12 @@
+﻿@model Lab.EF.MVC.Models.RegionView
+@{
+    ViewBag.Title = "Region Page";
+}
+
+<h1>Vista para Insertar</h1>
+
+@using (Html.BeginForm("Insert", "Region", FormMethod.Post)) 
+{
+<label>Decription: </label> @Html.TextBoxFor(r => r.Description)
+<input type="submit" class="btn btn-success" value="Guardar"/>
+}

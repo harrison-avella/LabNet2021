@@ -1,5 +1,6 @@
 ﻿using Lab.EF.Entities;
 using Lab.EF.Logic;
+using Lab.EF.MVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,43 @@ namespace Lab.EF.MVC.Controllers
 {
     public class RegionController : Controller
     {
+        RegionLogic regionLogic = new RegionLogic();
         // GET: Region
         public ActionResult Index()
         {
-            var regionLogic = new RegionLogic();
             //var regiones = regionLogic.GetAll();
             List<Region> regiones = regionLogic.GetAll();
-            return View(regiones);
+            List<RegionView> regionViews = regiones.Select(s => new RegionView
+            {
+                Id = s.RegionID,
+                Description = s.RegionDescription,
+            }).ToList();
+            return View(regionViews);
         }
+
+        public ActionResult Insert()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult Insert(RegionView regionView)
+        {
+            try
+            {
+                Region regionEntity = new Region
+                {
+                    RegionDescription = regionView.Description
+                };
+                regionLogic.Add(regionEntity);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "Error");
+            }
+        }
+
     }
 }

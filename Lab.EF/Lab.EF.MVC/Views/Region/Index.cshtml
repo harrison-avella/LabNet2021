@@ -1,4 +1,4 @@
-﻿@model List<Lab.EF.Entities.Region>
+﻿@model List<Lab.EF.MVC.Models.RegionView>
 
 @{
     ViewBag.Title = "Region Page";
@@ -15,12 +15,16 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var region in Model)
+        @foreach (var region in Model)
         {
             <tr>
-                <th scope="row">@region.RegionID</th>
-                <td>@region.RegionDescription</td>
-            </tr>   
+                <th scope="row">@region.Id</th>
+                <td>@region.Description</td>
+            </tr>
         }
     </tbody>
 </table>
+
+<div>
+    @Html.ActionLink("Insertar Nueva Region", "Insert")
+</div>
