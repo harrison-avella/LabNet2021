@@ -59,5 +59,10 @@ namespace Lab.EF.Logic
         {
             throw new NotImplementedException();
         }
+
+        public int idMax()
+        {
+            return context.Region.Select(r => r.RegionID).Max();
+        }
     }
 }

@@ -11,19 +11,22 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Description</th>
-
+            <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var region in Model)
         {
-            <tr>
-                <th scope="row">@region.Id</th>
-                <td>@region.Description</td>
-            </tr>
+        <tr>
+            <th scope="row">@region.Id</th>
+            <td>@region.Description</td>
+            <td>@Html.ActionLink("Borrar", "Delete", new { id = region.Id })</td>
+        </tr>
         }
     </tbody>
 </table>
+
+
 
 <div>
     @Html.ActionLink("Insertar Nueva Region", "Insert")

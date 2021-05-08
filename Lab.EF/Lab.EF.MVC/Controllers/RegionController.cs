@@ -38,15 +38,22 @@ namespace Lab.EF.MVC.Controllers
             {
                 Region regionEntity = new Region
                 {
+                    RegionID = regionLogic.idMax() + 1,
                     RegionDescription = regionView.Description
                 };
-                regionLogic.Add(regionEntity);
+                regionLogic.Add(regionEntity); //arreglar lo del id autoincremental
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
                 return RedirectToAction("Index", "Error");
             }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            regionLogic.Delete(id);
+            return RedirectToAction("Index");
         }
 
     }
