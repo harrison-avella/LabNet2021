@@ -23,22 +23,6 @@ namespace Lab.EF.Logic
 
         public void Delete(int id)
         {
-            /// Encuentra la PRIMER ocurrencia que coincida con la expresión entre paréntesis, si no 
-            /// se encuentra valor arroja una excepción.
-            //var regionAEliminar = context.Region.First(r => r.RegionID == id);
-
-            /// Encuentra la PRIMER ocurrencia que coincida con la expresión entre paréntesis, si no 
-            /// se encuentra valor devuelve un valor default (correspondiente al tipo de dato solicitado)
-            //regionAEliminar = context.Region.FirstOrDefault(r => r.RegionID == id);
-
-            /// Encuentra la UNICA ocurrencia que coincida con la expresión entre paréntesis, si no 
-            /// se encuentra valor arroja una excepción. Si se encuentra más de un valor arroja una excepción.
-            //regionAEliminar = context.Region.Single(r => r.RegionID == id);
-
-            /// Encuentra la UNICA ocurrencia que coincida con la expresión entre paréntesis, si no 
-            /// se encuentra valor devuelve un valor default (correspondiente al tipo de dato solicitado). Si se encuentra más de un valor arroja una excepción.
-            //regionAEliminar = context.Region.SingleOrDefault(r => r.RegionID == id);
-
             var regionAEliminar = context.Region.Find(id);
 
             context.Region.Remove(regionAEliminar);
@@ -55,12 +39,12 @@ namespace Lab.EF.Logic
             context.SaveChanges();
         }
 
-        public Region GetOne(int anObject)
+        public Region GetOne(int id)
         {
-            throw new NotImplementedException();
+            return context.Region.First(p => p.RegionID.Equals(id));
         }
 
-        public int idMax()
+        public int IdMax()
         {
             return context.Region.Select(r => r.RegionID).Max();
         }

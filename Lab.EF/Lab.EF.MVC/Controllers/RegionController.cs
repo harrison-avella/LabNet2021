@@ -38,7 +38,7 @@ namespace Lab.EF.MVC.Controllers
             {
                 Region regionEntity = new Region
                 {
-                    RegionID = regionLogic.idMax() + 1,
+                    RegionID = regionLogic.IdMax() + 1,
                     RegionDescription = regionView.Description
                 };
                 regionLogic.Add(regionEntity); //arreglar lo del id autoincremental

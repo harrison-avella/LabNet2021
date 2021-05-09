@@ -30,16 +30,16 @@ namespace Lab.EF.Logic
         }
         public void Update(Customers customer)
         {
-            var categoryUpdate = context.Customers.Find(customer.CustomerID);
+            var customerUpdate = context.Customers.Find(customer.CustomerID);
 
-            categoryUpdate.CompanyName = customer.CompanyName;
-            categoryUpdate.ContactName = customer.ContactName;
-            categoryUpdate.ContactTitle = customer.ContactTitle;
-            categoryUpdate.Address = customer.Address;
-            categoryUpdate.City = customer.City;
-            categoryUpdate.PostalCode = customer.PostalCode;
-            categoryUpdate.Country = customer.Country;
-            categoryUpdate.Phone = customer.Phone;
+            customerUpdate.CompanyName = customer.CompanyName;
+            customerUpdate.ContactName = customer.ContactName;
+            customerUpdate.ContactTitle = customer.ContactTitle;
+            customerUpdate.Address = customer.Address;
+            customerUpdate.City = customer.City;
+            customerUpdate.PostalCode = customer.PostalCode;
+            customerUpdate.Country = customer.Country;
+            customerUpdate.Phone = customer.Phone;
 
             context.SaveChanges();
         }
