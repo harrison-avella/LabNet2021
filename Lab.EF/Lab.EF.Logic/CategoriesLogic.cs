@@ -11,35 +11,57 @@ namespace Lab.EF.Logic
     {
         public void Add(Categories newCategory)
         {
-            context.Categories.Add(newCategory);
-            context.SaveChanges();
+            try
+            {
+                context.Categories.Add(newCategory);
+                context.SaveChanges();
+            }
+            catch (Exception ex) { throw ex; }
         }
 
         public void Delete(int id)
         {
-            var categoryDelete = context.Categories.Find(id);
-            context.Categories.Remove(categoryDelete);
-            context.SaveChanges();
+            try
+            {
+                var categoryDelete = context.Categories.Find(id);
+                context.Categories.Remove(categoryDelete);
+                context.SaveChanges();
+            }
+            catch (Exception ex) { throw ex; }
         }
         public List<Categories> GetAll()
         {
-            return context.Categories.ToList();
+            try
+            {
+                return context.Categories.ToList();
+            }
+            catch (Exception ex) { throw ex; }
+
         }
 
         public Categories GetOne(int id)
         {
-            return context.Categories.First(p => p.CategoryID == id);
+            try
+            {
+                return context.Categories.First(p => p.CategoryID == id);
+            }
+            catch (Exception ex) { throw ex; }
         }
 
         public void Update(Categories category)
         {
-            var categoryUpdate = context.Categories.Find(category.CategoryID);
+            try
+            {
+                var categoryUpdate = context.Categories.Find(category.CategoryID);
 
-            categoryUpdate.CategoryName = category.CategoryName;
-            categoryUpdate.Description = category.Description;
-            categoryUpdate.Picture = category.Picture;
+                categoryUpdate.CategoryName = category.CategoryName;
+                categoryUpdate.Description = category.Description;
+                categoryUpdate.Picture = category.Picture;
 
-            context.SaveChanges();
+                context.SaveChanges();
+            }
+            catch (Exception ex) { throw ex; }
         }
     }
 }
+

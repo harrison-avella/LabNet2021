@@ -11,30 +11,53 @@ namespace Lab.EF.Logic
     {
         public List<Orders> GetAll()
         {
+            try
+            {
+
             return context.Orders.ToList();
+            }
+            catch (Exception ex) { throw ex; }
         }
 
         public Orders GetOne(int id)
         {
+            try
+            {
+
             return context.Orders.First(o => o.OrderID.Equals(id));
+            }
+            catch (Exception ex) { throw ex; }
         }
 
         public void Add(Orders newOrder)
         {
+            try
+            {
+
             context.Orders.Add(newOrder);
             context.SaveChanges();
+            }
+            catch (Exception ex) { throw ex; }
         }
 
         public void Delete(int id)
         {
+            try
+            {
+
             var orderDelete = context.Orders.Find(id);
             context.Orders.Remove(orderDelete);
             context.SaveChanges();
+            }
+            catch (Exception ex) { throw ex; }
         }
 
 
         public void Update(Orders order)
         {
+            try
+            {
+
             var orderUpdate = context.Orders.Find(order.OrderID);
 
             orderUpdate.CustomerID = order.CustomerID;
@@ -50,6 +73,8 @@ namespace Lab.EF.Logic
             orderUpdate.ShipCountry = order.ShipCountry;
 
             context.SaveChanges();
+            }
+            catch (Exception ex) { throw ex; }
         }
     }
 }

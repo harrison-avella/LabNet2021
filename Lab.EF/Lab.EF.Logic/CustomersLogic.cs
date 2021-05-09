@@ -11,37 +11,62 @@ namespace Lab.EF.Logic
     {
         public List<Customers> GetAll()
         {
-            return context.Customers.ToList();
+            try
+            {
+
+                return context.Customers.ToList();
+            }
+            catch (Exception ex) { throw ex; }
         }
         public Customers GetOne(string id)
         {
-            return context.Customers.First(p => p.CustomerID.Equals(id));
+            try
+            {
+
+                return context.Customers.First(p => p.CustomerID.Equals(id));
+            }
+            catch (Exception ex) { throw ex; }
         }
         public void Add(Customers newCustomer)
         {
-            context.Customers.Add(newCustomer);
-            context.SaveChanges();
+            try
+            {
+
+                context.Customers.Add(newCustomer);
+                context.SaveChanges();
+            }
+            catch (Exception ex) { throw ex; }
         }
         public void Delete(string id)
         {
-            var customerDelete = context.Customers.Find(id);
-            context.Customers.Remove(customerDelete);
-            context.SaveChanges();
+            try
+            {
+                var customerDelete = context.Customers.Find(id);
+                context.Customers.Remove(customerDelete);
+                context.SaveChanges();
+
+            }
+            catch (Exception ex) { throw ex; }
         }
         public void Update(Customers customer)
         {
-            var customerUpdate = context.Customers.Find(customer.CustomerID);
+            try
+            {
 
-            customerUpdate.CompanyName = customer.CompanyName;
-            customerUpdate.ContactName = customer.ContactName;
-            customerUpdate.ContactTitle = customer.ContactTitle;
-            customerUpdate.Address = customer.Address;
-            customerUpdate.City = customer.City;
-            customerUpdate.PostalCode = customer.PostalCode;
-            customerUpdate.Country = customer.Country;
-            customerUpdate.Phone = customer.Phone;
+                var customerUpdate = context.Customers.Find(customer.CustomerID);
 
-            context.SaveChanges();
+                customerUpdate.CompanyName = customer.CompanyName;
+                customerUpdate.ContactName = customer.ContactName;
+                customerUpdate.ContactTitle = customer.ContactTitle;
+                customerUpdate.Address = customer.Address;
+                customerUpdate.City = customer.City;
+                customerUpdate.PostalCode = customer.PostalCode;
+                customerUpdate.Country = customer.Country;
+                customerUpdate.Phone = customer.Phone;
+
+                context.SaveChanges();
+            }
+            catch (Exception ex) { throw ex; }
         }
 
 

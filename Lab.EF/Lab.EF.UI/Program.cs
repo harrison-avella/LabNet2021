@@ -17,7 +17,7 @@ namespace Lab.EF.UI
 
             RegionLogic regionLogic = new RegionLogic();
 
-            var maximo = regionLogic.idMax();
+            var maximo = regionLogic.IdMax();
 
             Console.WriteLine(maximo);
 

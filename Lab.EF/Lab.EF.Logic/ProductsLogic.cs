@@ -12,51 +12,69 @@ namespace Lab.EF.Logic
     {
         public List<Products> GetAll()
         {
-            return context.Products.ToList();
+            try
+            {
+                return context.Products.ToList();
+            }
+            catch (Exception ex) { throw ex; }
         }
 
         public Products GetOne(int id)
         {
-            return context.Products.First(p => p.ProductID.Equals(id));
+            try
+            {
+
+                return context.Products.First(p => p.ProductID.Equals(id));
+            }
+            catch (Exception ex) { throw ex; }
         }
 
         public void Add(Products newProduct)
         {
-            context.Products.Add(newProduct);
-            context.SaveChanges();
+            try
+            {
+
+                context.Products.Add(newProduct);
+                context.SaveChanges();
+            }
+            catch (Exception ex) { throw ex; }
         }
 
         public void Delete(int id)
         {
+            try
+            {
 
-            var productDelete = context.Products.Find(id);
+                var productDelete = context.Products.Find(id);
 
-            if (productDelete == null) throw new Exception("No se pudo eliminar producto");
+                context.Products.Remove(productDelete);
+                context.SaveChanges();
 
-            context.Products.Remove(productDelete);
-            context.SaveChanges();
-
+            }
+            catch (Exception ex) { throw ex; }
 
         }
 
         public void Update(Products product)
         {
+            try
+            {
+                var productUpdate = context.Products.Find(product.ProductID);
 
-            var productUpdate = context.Products.Find(product.ProductID);
+                productUpdate.ProductName = product.ProductName;
+                productUpdate.SupplierID = product.SupplierID;
+                productUpdate.CategoryID = product.CategoryID;
+                productUpdate.QuantityPerUnit = product.QuantityPerUnit;
+                productUpdate.UnitPrice = product.UnitPrice;
+                productUpdate.UnitsInStock = product.UnitsInStock;
+                productUpdate.UnitsOnOrder = product.UnitsOnOrder;
+                productUpdate.ReorderLevel = product.ReorderLevel;
+                productUpdate.Discontinued = product.Discontinued;
 
-            if (productUpdate == null) throw new Exception("No se pudo actualizar producto");
+                context.SaveChanges();
 
-            productUpdate.ProductName = product.ProductName;
-            productUpdate.SupplierID = product.SupplierID;
-            productUpdate.CategoryID = product.CategoryID;
-            productUpdate.QuantityPerUnit = product.QuantityPerUnit;
-            productUpdate.UnitPrice = product.UnitPrice;
-            productUpdate.UnitsInStock = product.UnitsInStock;
-            productUpdate.UnitsOnOrder = product.UnitsOnOrder;
-            productUpdate.ReorderLevel = product.ReorderLevel;
-            productUpdate.Discontinued = product.Discontinued;
-
-            context.SaveChanges();
+            }
+            catch (Exception ex) { throw ex; }
 
         }
     }

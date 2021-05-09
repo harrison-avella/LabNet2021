@@ -44,7 +44,7 @@ namespace Lab.EF.MVC.Controllers
                 regionLogic.Add(regionEntity); //arreglar lo del id autoincremental
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return RedirectToAction("Index", "Error");
             }
@@ -52,9 +52,16 @@ namespace Lab.EF.MVC.Controllers
 
         public ActionResult Delete(int id)
         {
-            regionLogic.Delete(id);
-            return RedirectToAction("Index");
-        }
+            try
+            {
+                regionLogic.Delete(id);
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Error");
+            }
 
+        }
     }
 }
