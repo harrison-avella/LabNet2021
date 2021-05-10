@@ -56,7 +56,7 @@ namespace Lab.EF.Logic
 
                 categoryUpdate.CategoryName = category.CategoryName;
                 categoryUpdate.Description = category.Description;
-                categoryUpdate.Picture = category.Picture;
+                //categoryUpdate.Picture = category.Picture;
 
                 context.SaveChanges();
             }

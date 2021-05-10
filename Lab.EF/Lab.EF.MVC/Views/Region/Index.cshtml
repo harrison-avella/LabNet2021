@@ -4,7 +4,11 @@
     ViewBag.Title = "Regiones";
 }
 
-<h1>Tabla de regiones</h1>
+<h1>Regiones</h1>
+
+<div style="margin-bottom:20px;">
+    @Html.ActionLink("Agregar Region", "Insert", new { area = "" }, new { @class = "btn btn-primary" })
+</div>
 
 <table class="table table-striped table-dark rounded-lg table-borderless">
     <thead>
@@ -20,7 +24,10 @@
         <tr>
             <th scope="row">@region.Id</th>
             <td>@region.Description</td>
-            <td>@Html.ActionLink("Borrar", "Delete", new { id = region.Id })</td>
+            <td>
+                @Html.ActionLink("Borrar", "Delete", new { id = region.Id }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Editar", "Edit", new { region.Description }, new { @class = "btn btn-info" })
+            </td>
         </tr>
         }
     </tbody>
@@ -28,6 +35,3 @@
 
 
 
-<div>
-    @Html.ActionLink("Insertar Nueva Region", "Insert")
-</div>

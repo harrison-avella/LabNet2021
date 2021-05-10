@@ -9,39 +9,40 @@ using System.Web.Mvc;
 
 namespace Lab.EF.MVC.Controllers
 {
-    public class RegionController : Controller
+    public class CategoriesController : Controller
     {
-        RegionLogic regionLogic = new RegionLogic();
-        // GET: Region
+        CategoriesLogic categoriesLogic = new CategoriesLogic();
+
         public ActionResult Index()
         {
-            //var regiones = regionLogic.GetAll();
-            List<Region> regions = regionLogic.GetAll();
-            List<RegionView> regionViews = regions.Select(s => new RegionView
+            List<Categories> categories = categoriesLogic.GetAll();
+            List<CategoriesView> categoriesViews = categories.Select(c => new CategoriesView
             {
-                Id = s.RegionID,
-                Description = s.RegionDescription,
+                CategoryID = c.CategoryID,
+                CategoryName = c.CategoryName,
+                Description = c.Description
+
             }).ToList();
-            return View(regionViews);
+            return View(categoriesViews);
         }
+
 
         public ActionResult Insert()
         {
             return View();
         }
 
-
         [HttpPost]
-        public ActionResult Insert(RegionView regionView)
+        public ActionResult Insert(CategoriesView categoriesView)
         {
             try
             {
-                Region regionEntity = new Region
+                Categories categoriesEntity = new Categories
                 {
-                    RegionID = regionLogic.IdMax() + 1,
-                    RegionDescription = regionView.Description
+                    CategoryName = categoriesView.CategoryName,
+                    Description = categoriesView.Description
                 };
-                regionLogic.Add(regionEntity); //arreglar lo del id autoincremental
+                categoriesLogic.Add(categoriesEntity);
                 return RedirectToAction("Index");
             }
             catch (Exception)
@@ -54,7 +55,7 @@ namespace Lab.EF.MVC.Controllers
         {
             try
             {
-                regionLogic.Delete(id);
+                categoriesLogic.Delete(id);
                 return RedirectToAction("Index");
             }
             catch (Exception)
