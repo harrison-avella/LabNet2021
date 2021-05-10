@@ -1,0 +1,14 @@
+﻿@model Lab.EF.MVC.Models.EmployeesView
+@{
+    ViewBag.Title = "Empleado Insertar";
+}
+
+<h1>Insertar Categoria</h1>
+
+@using (Html.BeginForm("Insert", "Employees", FormMethod.Post))
+{
+    <label>Nombre: </label> @Html.TextBoxFor(e => e.FirstName)
+    <label>Apellido: </label> @Html.TextBoxFor(e => e.LastName)
+
+    <input type="submit" class="btn btn-success" value="Guardar" />
+}

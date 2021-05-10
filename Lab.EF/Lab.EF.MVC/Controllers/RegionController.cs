@@ -12,10 +12,9 @@ namespace Lab.EF.MVC.Controllers
     public class RegionController : Controller
     {
         RegionLogic regionLogic = new RegionLogic();
-        // GET: Region
+
         public ActionResult Index()
         {
-            //var regiones = regionLogic.GetAll();
             List<Region> regions = regionLogic.GetAll();
             List<RegionView> regionViews = regions.Select(s => new RegionView
             {
@@ -41,7 +40,7 @@ namespace Lab.EF.MVC.Controllers
                     RegionID = regionLogic.IdMax() + 1,
                     RegionDescription = regionView.Description
                 };
-                regionLogic.Add(regionEntity); //arreglar lo del id autoincremental
+                regionLogic.Add(regionEntity);
                 return RedirectToAction("Index");
             }
             catch (Exception)
