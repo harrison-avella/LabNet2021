@@ -64,5 +64,20 @@ namespace Lab.EF.MVC.Controllers
             }
 
         }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            Categories category = categoriesLogic.GetOne(id);
+            return View(category);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Categories categories)
+        {
+            categoriesLogic.Update(categories);
+            return RedirectToAction("Index");
+        }
+
     }
 }

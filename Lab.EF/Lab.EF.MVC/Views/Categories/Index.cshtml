@@ -27,8 +27,8 @@
             <td>@category.CategoryName</td>
             <td>@category.Description</td>
             <td>
-                @Html.ActionLink("Borrar", "Delete", new { id = category.CategoryID }, new { @class = "btn btn-danger" })
-                @Html.ActionLink("Editar", "Edit", new { category.CategoryID, category.CategoryName, category.Description }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Borrar", "Delete",  new { id = category.CategoryID }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Editar", "Edit",   new { id = category.CategoryID }, new { @class = "btn btn-info" })
             </td>
         </tr>
         }

@@ -43,7 +43,7 @@ namespace Lab.EF.Logic
         {
             try
             {
-                return context.Categories.First(p => p.CategoryID == id);
+                return context.Categories.First(c => c.CategoryID == id);
             }
             catch (Exception ex) { throw ex; }
         }
@@ -52,11 +52,10 @@ namespace Lab.EF.Logic
         {
             try
             {
-                var categoryUpdate = context.Categories.Find(category.CategoryID);
+                Categories categoryUpdate = GetOne(category.CategoryID);
 
                 categoryUpdate.CategoryName = category.CategoryName;
                 categoryUpdate.Description = category.Description;
-                //categoryUpdate.Picture = category.Picture;
 
                 context.SaveChanges();
             }

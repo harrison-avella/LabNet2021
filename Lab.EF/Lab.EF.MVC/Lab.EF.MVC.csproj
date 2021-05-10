@@ -282,6 +282,8 @@
     <Content Include="Views\Region\Insert.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Categories\Insert.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
