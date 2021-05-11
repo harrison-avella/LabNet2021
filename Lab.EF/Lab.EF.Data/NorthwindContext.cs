@@ -10,6 +10,7 @@ namespace Lab.EF.Data
     {
         public NorthwindContext() : base("name=NorthwindConnection")
         {
+            Configuration.ProxyCreationEnabled = false;
         }
 
         public virtual DbSet<Categories> Categories { get; set; }
