@@ -3,15 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.EF.UI", "Lab.EF.UI\Lab.EF.UI.csproj", "{83D0644C-E12F-45AF-A168-1BB35C8DBD3E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.EF.Logic", "Lab.EF.Logic\Lab.EF.Logic.csproj", "{0AE6246C-7922-455A-AF5E-A7E3EA0BD795}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.EF.Data", "Lab.EF.Data\Lab.EF.Data.csproj", "{45F0636C-6A1B-40CE-B6C6-93E3B8CAD3A3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.EF.Entities", "Lab.EF.Entities\Lab.EF.Entities.csproj", "{C6024822-4D5E-4C70-BCE1-5C08970F4CD6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.EF.MVC", "Lab.EF.MVC\Lab.EF.MVC.csproj", "{F9A141C6-B22C-4F53-BE79-7B56DD96D47F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.EF.WAPI", "Lab.EF.WAPI\Lab.EF.WAPI.csproj", "{A5DA8200-9F56-480F-A762-C9AFB2542CE5}"
 EndProject
@@ -23,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{83D0644C-E12F-45AF-A168-1BB35C8DBD3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{83D0644C-E12F-45AF-A168-1BB35C8DBD3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{83D0644C-E12F-45AF-A168-1BB35C8DBD3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{83D0644C-E12F-45AF-A168-1BB35C8DBD3E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0AE6246C-7922-455A-AF5E-A7E3EA0BD795}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0AE6246C-7922-455A-AF5E-A7E3EA0BD795}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AE6246C-7922-455A-AF5E-A7E3EA0BD795}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,10 +31,6 @@ Global
 		{C6024822-4D5E-4C70-BCE1-5C08970F4CD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6024822-4D5E-4C70-BCE1-5C08970F4CD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6024822-4D5E-4C70-BCE1-5C08970F4CD6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F9A141C6-B22C-4F53-BE79-7B56DD96D47F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9A141C6-B22C-4F53-BE79-7B56DD96D47F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F9A141C6-B22C-4F53-BE79-7B56DD96D47F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F9A141C6-B22C-4F53-BE79-7B56DD96D47F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A5DA8200-9F56-480F-A762-C9AFB2542CE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A5DA8200-9F56-480F-A762-C9AFB2542CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5DA8200-9F56-480F-A762-C9AFB2542CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
