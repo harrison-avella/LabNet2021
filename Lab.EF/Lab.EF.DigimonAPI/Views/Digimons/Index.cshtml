@@ -1,0 +1,32 @@
+﻿@model List<Lab.EF.DigimonAPI.Models.DigimonViewModels>
+
+    @{
+        ViewBag.Title = "Digimons";
+    }
+
+    <h1>Digimons</h1>
+
+
+    <table class="table table-striped table-dark rounded-lg table-borderless">
+        <thead>
+            <tr>
+                <th scope="col">Imagen</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Nivel</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var digimonViewModels in Model)
+            {
+            <tr>
+                <td>@digimonViewModels.Img</td>
+                <td>@digimonViewModels.Name</td>
+                <td>@digimonViewModels.Level</td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+
+
+
