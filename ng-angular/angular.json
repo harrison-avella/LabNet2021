@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-capa": {
+    "ng-angular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ng-capa",
+            "outputPath": "dist/ng-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -65,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-capa:build"
+            "browserTarget": "ng-angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ng-capa:build:production"
+              "browserTarget": "ng-angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-capa:build"
+            "browserTarget": "ng-angular:build"
           }
         },
         "test": {
@@ -113,16 +113,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ng-capa:serve"
+            "devServerTarget": "ng-angular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ng-capa:serve:production"
+              "devServerTarget": "ng-angular:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "ng-capa"
+  "defaultProject": "ng-angular"
 }
