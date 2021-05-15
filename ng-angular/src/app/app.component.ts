@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ng-angular';
+  title = 'The Northwind API';
+  numero = '1';
+  mostrar = true;
+  frase: any = {
+    mensaje: '¡El doc esta vivo!',
+    autor: 'Marty'
+  }
 }
