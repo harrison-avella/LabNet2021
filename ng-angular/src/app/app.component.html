@@ -41,8 +41,17 @@
            <p>{{frase.mensaje}}</p>
 
          </div>
-       </mat-card>
 
+       </mat-card>
+       <button mat-raised-button color="primary" (click)="mostrar = !mostrar">Mostrar / Ocultar</button>
+      </div>
+
+       <div class="col">
+        <h1>ngFor</h1>
+        <hr>
+        <mat-list role="list" *ngFor="let name of personajes; let i = index">
+          <mat-list-item role="listitem">{{i+1}} - {{name}}</mat-list-item>
+        </mat-list>
       </div>
     </div>
 

@@ -13,4 +13,6 @@ export class AppComponent {
     mensaje: '¡El doc esta vivo!',
     autor: 'Marty'
   }
+
+  personajes: string[] = ['Marty', 'Doc', 'Biff']
 }
