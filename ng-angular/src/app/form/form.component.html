@@ -1,0 +1,26 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label class="col-form-label">Nombre:</label>
+    <input formControlName="nombre" type="text" class="form-control">
+    <small *ngIf="nombreCtrl?.invalid && nombreCtrl?.touched" class="text-danger">El nombre es requerido</small>
+  </div>
+  <div class="form-group">
+    <label class="col-form-label">Apellido:</label>
+    <input formControlName="apellido" type="text" class="form-control">
+    <small *ngIf="apellidoCtrl?.invalid && apellidoCtrl?.touched" class="text-danger">El apellido es requerido</small>
+  </div>
+  <div class="form-group">
+    <label class="col-form-label">Email:</label>
+    <input formControlName="email" type="text" class="form-control">
+    <div *ngIf="emailCtrl?.invalid && emailCtrl?.touched">
+      <small *ngIf="emailCtrl?.errors?.required" class="text-danger">El email es requerido</small>
+      <small *ngIf="emailCtrl?.errors?.email" class="text-danger">El email no es válido</small>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-form-label">Mensaje:</label>
+    <textarea formControlName="mensaje" class="form-control"></textarea>
+  </div>
+  <button [disabled]="!form.valid" type="submit" class="btn btn-primary">Guardar</button>
+  <button type="button" class="btn btn-danger" (click)="onClickLimpiar()">Limpiar</button>
+</form>

@@ -3,7 +3,8 @@
   <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Top navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -31,27 +32,39 @@
     <h1>{{title}}</h1>
     <p>Esto es un numero: {{numero}}</p>
 
-    <div class ="row">
+    <div class="row">
       <div class="col">
-       <h1>ngIf</h1>
-       <hr>
-       <mat-card *ngIf="mostrar">
-         <div class="card-body">
-           <p>{{frase.autor}}</p>
-           <p>{{frase.mensaje}}</p>
+        <h1>ngIf</h1>
+        <hr>
+        <mat-card *ngIf="mostrar">
+          <div class="card-body">
+            <p>{{frase.autor}}</p>
+            <p>{{frase.mensaje}}</p>
 
-         </div>
+          </div>
 
-       </mat-card>
-       <button mat-raised-button color="primary" (click)="mostrar = !mostrar">Mostrar / Ocultar</button>
+        </mat-card>
+        <button mat-raised-button color="primary" (click)="mostrar = !mostrar">Mostrar / Ocultar</button>
       </div>
 
-       <div class="col">
+      <div class="col">
         <h1>ngFor</h1>
         <hr>
         <mat-list role="list" *ngFor="let name of personajes; let i = index">
           <mat-list-item role="listitem">{{i+1}} - {{name}}</mat-list-item>
         </mat-list>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="container pt-2">
+        <div class="row justify-content-sm-center pt-5">
+          <div class="col-sm-6 shadow round pb-3">
+            <h1 class="text-center pt-3 text-secondary">Formulario</h1>
+            <app-form></app-form>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -61,6 +74,6 @@
 
 
 
-  </body>
+</body>
 
 <router-outlet></router-outlet>

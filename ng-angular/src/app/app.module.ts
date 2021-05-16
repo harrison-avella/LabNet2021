@@ -9,9 +9,13 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormComponent } from './form/form.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +23,8 @@ import {MatListModule} from '@angular/material/list';
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
