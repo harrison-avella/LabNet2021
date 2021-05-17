@@ -1,0 +1,15 @@
+﻿@model Lab.EF.Entities.Employees
+@{
+    ViewBag.Title = "Empleados Editar";
+}
+
+<h1>Insertar Categoria</h1>
+
+@using (Html.BeginForm("Edit", "Employees", FormMethod.Post))
+{
+    <label>Nombre: </label> @Html.TextBoxFor(e => e.FirstName)
+    <label>Decription: </label> @Html.TextBoxFor(e => e.LastName)
+
+    <input type="submit" class="btn btn-success" value="Editar" />
+    @Html.TextBoxFor(e => e.EmployeeID, new { @class = "invisible" })
+}

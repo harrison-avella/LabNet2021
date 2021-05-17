@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Digimons";
+}
+
+
+<h1 class="text-center text-uppercase mb-5 font-weight-bold">Digimons</h1>
+
+
+
+@foreach (var digimonViewModels in Model)
+{
+
+    <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem; margin:auto;">
+            <p class="h1 text-center font-italic">@digimonViewModels.Name</p>
+        <img class="card-img-top " src="@digimonViewModels.Img" alt="Card image cap">
+        <div class="card-body">
+            <p class="card-text text-center"><b>Level:</b> @digimonViewModels.Level</p>
+        </div>
+    </div>
+}
+
+
+

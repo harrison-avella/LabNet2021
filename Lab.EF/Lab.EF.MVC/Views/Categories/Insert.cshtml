@@ -1,0 +1,14 @@
+﻿@model Lab.EF.MVC.Models.CategoriesView
+@{
+    ViewBag.Title = "Categoria Insertar";
+}
+
+<h1>Insertar Categoria</h1>
+
+@using (Html.BeginForm("Insert", "Categories", FormMethod.Post))
+{
+    <label>Nombre: </label> @Html.TextBoxFor(c => c.CategoryName)
+    <label>Apellidos: </label> @Html.TextBoxFor(c => c.Description)
+
+    <input type="submit" class="btn btn-success" value="Guardar" />
+}

@@ -1,0 +1,15 @@
+﻿@model Lab.EF.Entities.Categories
+@{
+    ViewBag.Title = "Categoria Editar";
+}
+
+<h1>Insertar Categoria</h1>
+
+@using (Html.BeginForm("Edit", "Categories", FormMethod.Post))
+{
+    <label>Nombre: </label> @Html.TextBoxFor(c => c.CategoryName)
+    <label>Decription: </label> @Html.TextBoxFor(c => c.Description)
+
+    <input type="submit" class="btn btn-success" value="Editar" />
+    @Html.TextBoxFor(c => c.CategoryID, new { @class = "invisible" })
+}
