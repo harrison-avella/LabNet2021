@@ -1,0 +1,20 @@
+<div class="container-md">
+  <div class="row">
+    <div class="col-md-8">
+      <p>Componente Padre</p>
+        <mat-form-field class="example-form-field" [formGroup]="form">
+          <mat-label>Comunicar al hijo</mat-label>
+          <input matInput type="text" formControlName="control">
+        </mat-form-field>
+
+        <app-child [sendParent]="sendChild" (sendOutParent)="recibAlert($event)"></app-child>
+    </div>
+  </div>
+
+
+  <br>
+  <div *ngIf="sendChildOutput">
+    <img src= "https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/styles/bi_876/public/media/image/2021/02/10-mejores-capitulos-simpsons-como-verlos-2235199.jpg?itok=D3GEih7n">
+  </div>
+
+</div>

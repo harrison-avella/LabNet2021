@@ -12,6 +12,8 @@ import {MatListModule} from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
 
+import { ComunicationModule } from './comunication/comunication.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,8 @@ import { FormComponent } from './form/form.component';
     MatCardModule,
     MatButtonModule,
     MatListModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ComunicationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
