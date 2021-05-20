@@ -1,0 +1,14 @@
+<table class="table">
+  <thead>
+      <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Descripcion</th>
+      </tr>
+  </thead>
+  <tbody *ngFor="let item of regions">
+      <tr>
+          <td scope="row">{{item.RegionID}}</td>
+          <td scope="row">{{item.RegionDescription}}</td>
+      </tr>
+  </tbody>
+</table>

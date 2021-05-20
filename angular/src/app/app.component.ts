@@ -13,7 +13,7 @@ export class AppComponent {
 constructor(private dataSvc: DataService){}
 
 ngOnInit(){
-  this.dataSvc.getAll().subscribe((res)=> {
+  this.dataSvc.getRegions().subscribe((res)=> {
     console.log('Res', res);
   });
 }
