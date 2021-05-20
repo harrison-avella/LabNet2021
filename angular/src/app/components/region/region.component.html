@@ -1,14 +1,23 @@
-<table class="table">
+<h1 class="text-center">Regiones</h1>
+<table class="table table-striped table-dark rounded-lg table-borderless justify-content-sm-center rounded"
+  style="width: 18rem; margin:auto;">
   <thead>
-      <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Descripcion</th>
-      </tr>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Descripcion</th>
+      <th>Aciones</th>
+    </tr>
   </thead>
   <tbody *ngFor="let item of regions">
-      <tr>
-          <td scope="row">{{item.RegionID}}</td>
-          <td scope="row">{{item.RegionDescription}}</td>
-      </tr>
+    <tr>
+      <th scope="row">{{item.RegionID}}</th>
+      <td scope="row">{{item.RegionDescription}}</td>
+      <td>
+        <button class="btn btn-success">Editar</button>
+        <button class="btn btn-danger">Borrar</button>
+      </td>
+
+
+    </tr>
   </tbody>
 </table>
