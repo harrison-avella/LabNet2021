@@ -20,22 +20,33 @@ namespace Lab.EF.Data
 
         public virtual DbSet<Region> Region { get; set; }
         public virtual DbSet<Territories> Territories { get; set; }
+        public virtual DbSet<Orders> Orders { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
+
             modelBuilder.Entity<Employees>()
            .HasMany(e => e.Employees1)
            .WithOptional(e => e.Employees2)
            .HasForeignKey(e => e.ReportsTo);
 
             modelBuilder.Entity<Employees>()
-                .HasMany(e => e.Territories)
-                .WithMany(e => e.Employees)
-                .Map(m => m.ToTable("EmployeeTerritories").MapLeftKey("EmployeeID").MapRightKey("TerritoryID"));
+              .HasMany(e => e.Territories)
+              .WithMany(e => e.Employees)
+              .Map(m => m.ToTable("EmployeeTerritories").MapLeftKey("EmployeeID").MapRightKey("TerritoryID"));
+
+            modelBuilder.Entity<Orders>()
+                .Property(e => e.CustomerID)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Orders>()
+                .Property(e => e.Freight)
+                .HasPrecision(19, 4);
 
             modelBuilder.Entity<Products>()
-                .Property(e => e.UnitPrice)
-                .HasPrecision(19, 4);
+                     .Property(e => e.UnitPrice)
+                  .HasPrecision(19, 4);
 
             modelBuilder.Entity<Region>()
                 .Property(e => e.RegionDescription)

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { RegionI } from 'src/app/models/region.model';
 import {DataService } from '../../services/data.service'
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-region',
@@ -14,8 +15,8 @@ export class RegionComponent implements OnInit {
 private suscription: Subscription = new Subscription();
 
   constructor(
-    private service: DataService
-
+    private service: DataService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -28,4 +29,8 @@ private suscription: Subscription = new Subscription();
     );
   }
 
+
+  updateRegion(id: number){
+    this.router.navigate(['/see/'+id])
+  }
 }

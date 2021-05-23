@@ -58,6 +58,8 @@ namespace Lab.EF.Logic
 
                 employeeUpdate.FirstName = employee.FirstName;
                 employeeUpdate.LastName = employee.LastName;
+                employeeUpdate.Address = employee.Address;
+                employeeUpdate.City = employee.City;
 
                 context.SaveChanges();
             }

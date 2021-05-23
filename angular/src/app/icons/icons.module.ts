@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 
 @NgModule({
@@ -9,4 +9,4 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ]
 })
-export class ComponentsModule { }
+export class IconsModule { }

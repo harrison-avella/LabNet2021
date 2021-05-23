@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { RegionI } from '../models/region.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,4 +13,10 @@ export class DataService {
   getRegions(): Observable<any>{
     return this.http.get<any>(environment.api+'Regions')
   }
+
+  updateRegion(id : number, request: RegionI )
+  {
+      return this.http.patch(environment.api + "Regions/" +id,request);
+  }
+
 }

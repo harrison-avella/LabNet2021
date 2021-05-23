@@ -1,0 +1,33 @@
+<app-employees-new></app-employees-new>
+<app-employees-update></app-employees-update>
+<app-employees-delete></app-employees-delete>
+<table class="table table-striped table-dark rounded-lg table-borderless justify-content-sm-center rounded"
+  style="width: auto; margin:auto;">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Direccion</th>
+      <th scope="col">Ciudad</th>
+      <th scope="col">Aciones</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let item of employees">
+    <tr>
+      <td scope="row">{{item.EmployeeID}}</td>
+      <td scope="row">{{item.FirstName}}</td>
+      <td scope="row">{{item.LastName}}</td>
+      <td scope="row">{{item.Address}}</td>
+      <td scope="row">{{item.City}}</td>
+      <td scope="row">
+        <button type="button" (click)="updateById(item.EmployeeID)" class="btn btn-outline-warning m-1">
+          <i-bs name="pencil-fill"></i-bs> Editar
+        </button>
+        <button type="button" (click)="deleteById(item.EmployeeID)" class="btn btn-outline-danger m-1">
+          <i-bs name="trash-fill"></i-bs> Eliminar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

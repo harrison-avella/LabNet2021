@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.EF.Entities", "Lab.EF.E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.EF.WAPI", "Lab.EF.WAPI\Lab.EF.WAPI.csproj", "{A5DA8200-9F56-480F-A762-C9AFB2542CE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.EF.DigimonAPI", "Lab.EF.DigimonAPI\Lab.EF.DigimonAPI.csproj", "{33C14657-A192-4351-A9D3-67CFA7A8069A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.EF.Digimon", "Lab.EF.DigimonAPI\Lab.EF.Digimon.csproj", "{33C14657-A192-4351-A9D3-67CFA7A8069A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

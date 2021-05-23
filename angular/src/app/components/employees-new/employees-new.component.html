@@ -1,0 +1,27 @@
+  <div class="card p-4 shadow bg-dark text-white mt-2 mb-2" style="width: 18rem; margin:auto;">
+    <h2>Agregar Empleado</h2>
+    <p>Ingrese datos</p>
+    <form [formGroup]="form" (ngSubmit)="onAdd()">
+      <div class="form-group">
+        <label class="text" for="txtNombre">Nombre: </label>
+        <input formControlName="FirstName" type="text" class="form-control" id="txtNombre" placeholder="Ingrese su nombre">
+        <small *ngIf="firstNameCtrl?.invalid && firstNameCtrl?.touched" class="text-danger">El nombre es requerido</small>
+      </div>
+      <div class="form-group">
+        <label class="text" for="txtApellido">Apellido: </label>
+        <input formControlName="LastName" type="text" class="form-control" id="txtApellido"
+          placeholder="Ingrese su apellido">
+      </div>
+      <div class="form-group">
+        <label class="text" for="txtDireccion">Direccion: </label>
+        <input formControlName="Address" type="text" class="form-control" id="txtDireccion"
+          placeholder="Ingrese su direccion">
+      </div>
+      <div class="form-group">
+        <label class="text" for="txtCiudad">Ciudad: </label>
+        <input formControlName="City" type="text" class="form-control" id="txtCiudad" placeholder="Ingrese su ciudad">
+      </div>
+      <button type="submit" class="btn btn-primary mt-2" id="btn-Crear"
+        [disabled]="!this.form.valid">Crear</button>
+    </form>
+  </div>

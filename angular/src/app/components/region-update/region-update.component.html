@@ -1,0 +1,15 @@
+
+<div class="card p-4 shadow bg-dark text-white mb-2"  style="width: 18rem; margin:auto;">
+  <h2>Editar Region</h2>
+  <form [formGroup]="form" (ngSubmit)="onUpdate()">
+    <div class="form-group">
+      <label class="text" for="txtUpdate">Id </label>
+      <input formControlName="id" type="text" class="form-control" id="txtUpdate" placeholder="id">
+    </div>
+    <div class="form-group">
+      <label class="text" for="txtNombre">Descripcion: </label>
+      <input formControlName="descripcion" type="text" class="form-control" id="txtNombre" placeholder="Descripcion">
+    </div>
+    <button type="submit" class="btn btn-primary mt-2" id="btn-Crear" [disabled]="!this.form.valid">Editar</button>
+  </form>
+</div>
