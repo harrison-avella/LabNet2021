@@ -19,7 +19,7 @@ export class EmployeesComponent implements OnInit {
 
   constructor(
     private service: EmployeesService,
-    private router: Router,
+ //   private router: Router,
     private toastr: ToastrService
   ) {}
 
@@ -34,9 +34,10 @@ export class EmployeesComponent implements OnInit {
     );
   }
 
-  updateById(id: number){
+/*  updateById(id: number){
      this.router.navigate(['employeeUpdate', id]);
   }
+  */
 
   deleteById(id: number){
     this.service.deleteEmployee(id).subscribe(

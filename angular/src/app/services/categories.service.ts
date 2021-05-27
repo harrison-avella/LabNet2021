@@ -10,42 +10,42 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryService {
+export class CategoriesService {
 
- /* private httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  }*/
+  /* private httpOptions = {
+     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+   }*/
 
   constructor(private readonly http: HttpClient, private readonly router: Router) { }
 
   getOne(id: Number): Observable<CategoriesI> {
     let category!: Observable<CategoriesI>;
 
-    category = this.http.get<CategoriesI>(environment.api + '/category/' + id);
+    category = this.http.get<CategoriesI>(environment.api + '/Categories' + id);
 
     return category;
   }
 
-  getAll(searchString: string = ""): Observable<CategoriesI[]> {
-    return this.http.get<CategoriesI[]>(environment.api + '/category?searchString=' + searchString).pipe(
+  get(): Observable<CategoriesI[]> {
+    return this.http.get<CategoriesI[]>(environment.api + '/Categories').pipe(
       catchError(this.errorHandler)
     );
   }
 
-  add(category: CategoriesI): Observable<CategoriesI> {
-    return this.http.post<CategoriesI>(environment.api+ '/category', category).pipe(
+  post(category: CategoriesI): Observable<CategoriesI> {
+    return this.http.post<CategoriesI>(environment.api + '/Categories', category).pipe(
       catchError(this.errorHandler)
     );;
   }
 
-  edit(category: CategoriesI): Observable<CategoriesI> {
-    return this.http.put<CategoriesI>(environment.api + '/category', category).pipe(
+  put(category: CategoriesI): Observable<CategoriesI> {
+    return this.http.put<CategoriesI>(environment.api + '/Categories', category).pipe(
       catchError(this.errorHandler)
     );;
   }
 
   delete(id: number) {
-    return this.http.delete(environment.api + '/category/' + id).pipe(
+    return this.http.delete(environment.api + '/Categories' + id).pipe(
       catchError(this.errorHandler)
     );;
   }

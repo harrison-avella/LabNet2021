@@ -17,7 +17,7 @@ export class EmployeesService{
 
     patchEmployee(id : number,request: EmployeesI )
     {
-        return this.http.patch(environment.api + "Employees/" +id, request);
+        return this.http.put(environment.api + "Employees/" +id, request);
     }
 
     deleteEmployee(id: number)
