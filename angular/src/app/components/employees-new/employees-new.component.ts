@@ -51,7 +51,7 @@ export class EmployeesNewComponent implements OnInit {
   onAdd(): void{
     this.service.postEmployee(this.form.value).subscribe(
       ()=>{
-        this.toastr.success('Por fin mi heroe', 'lo haz logrado'),
+        this.toastr.success('Por fin mi heroe.', 'Se agrego el esclavo'),
         this.clean();
       },
       (error: HttpErrorResponse) => this.toastr.error('No es posible que mal '+error.message,'Me lleva la cachetada')
@@ -59,27 +59,17 @@ export class EmployeesNewComponent implements OnInit {
     }
 
 
+  onUpdate(): void{
+    this.service.patchEmployee(this.form.value.id,this.form.value).subscribe(
+      ()=>{
+        this.toastr.success('Por fin mi heroe.', 'Se edito el esclavo'),
+        this.clean();
+      },
+      (error: HttpErrorResponse) => this.toastr.error('No es posible que mal '+error.message,'Me lleva la cachetada')
+    );
+  }
+
 clean(): void{
   this.form.reset();
 }
-
-
- /* var emp = new EmployeesI();
-    emp.firstName = this.firstNameCtrl.value;
-    emp.lastName = this.lastNameCtrl.value;
-    emp.address = this.addressCtrl.value;
-    emp.city= this.cityCtrl.value;
-    this.service.postEmployee(emp).subscribe(
-      {
-        complete: ()=>{
-          alert("Empleado agregado");
-          this.form.reset();
-        },
-        error: (err)=>{
-          alert(err.error?.ExceptionMessage ?? err.error);
-        }
-      }
-    );
-  }
-*/
 }

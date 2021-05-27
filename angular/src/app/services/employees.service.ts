@@ -15,9 +15,9 @@ export class EmployeesService{
         return this.http.post(environment.api + 'Employees/', request);
     }
 
-    updateEmployee(id : number,request: EmployeesI )
+    patchEmployee(id : number,request: EmployeesI )
     {
-        return this.http.patch(environment.api + "Employees/" +id,request);
+        return this.http.patch(environment.api + "Employees/" +id, request);
     }
 
     deleteEmployee(id: number)

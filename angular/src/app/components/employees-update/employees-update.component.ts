@@ -12,13 +12,13 @@ import { EmployeesService } from '../../services/employees.service';
 export class EmployeesUpdateComponent implements OnInit {
 
 
-  formUpdate : FormGroup;
+  form : FormGroup;
 
   constructor(private readonly fb: FormBuilder,private service: EmployeesService) { }
 
 
   ngOnInit(): void {
-    this.formUpdate = this.fb.group({
+    this.form = this.fb.group({
       nombre: new FormControl('',Validators.required),
       apellido: new FormControl('',Validators.required),
       direccion: new FormControl('',Validators.required),
@@ -27,24 +27,20 @@ export class EmployeesUpdateComponent implements OnInit {
   })
   }
   //Getters
-  get nombreCtrl(): AbstractControl{
-    return this.formUpdate.get('nombre');
+  get firstNameCtrl(): AbstractControl{
+    return this.form.get('FirstName');
   }
 
-  get apellidoCtrl(): AbstractControl{
-    return this.formUpdate.get('apellido');
+  get lastNameCtrl(): AbstractControl{
+    return this.form.get('LastName');
   }
 
-  get direccionCtrl(): AbstractControl{
-    return this.formUpdate.get('direccion');
+  get addressCtrl(): AbstractControl{
+    return this.form.get('Address');
   }
 
-  get ciudadCtrl(): AbstractControl{
-    return this.formUpdate.get('ciudad');
-  }
-
-  get idCtrl(): AbstractControl{
-    return this.formUpdate.get('id');
+  get cityCtrl(): AbstractControl{
+    return this.form.get('City');
   }
 
   onUpdate(): void{

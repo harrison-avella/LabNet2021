@@ -7,113 +7,117 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using Lab.EF.Data;
 using Lab.EF.Entities;
+using Lab.EF.Logic;
+using Lab.EF.WAPI.Models;
 
 namespace Lab.EF.WAPI.Controllers
 {
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class CategoriesController : ApiController
     {
-        private NorthwindContext db = new NorthwindContext();
+        CategoriesLogic categoriesLogic = new CategoriesLogic();
 
         // GET: api/Categories
-        public IQueryable<Categories> GetCategories()
+        [HttpGet]
+        public IHttpActionResult Get()
         {
-            return db.Categories;
+            try
+            {
+                IEnumerable<Categories> categories = categoriesLogic.GetAll();
+                IEnumerable<CategoriesView> categoriesView = categories.Select(c => new CategoriesView
+                {
+                    CategoryID = c.CategoryID,
+                    CategoryName = c.CategoryName,
+                    Description = c.Description,
+                }).ToList();
+                return Ok(categoriesView);
+            }
+            catch (Exception ex)
+            {
+                return Content(HttpStatusCode.BadRequest, "No hay nadie?");
+            }
         }
 
         // GET: api/Categories/5
-        [ResponseType(typeof(Categories))]
-        public IHttpActionResult GetCategories(int id)
+        [HttpGet]
+        public IHttpActionResult Get(int id)
         {
-            Categories categories = db.Categories.Find(id);
-            if (categories == null)
+            try
             {
-                return NotFound();
+                Categories c = categoriesLogic.GetOne(id);
+                CategoriesView categoriesView = new CategoriesView
+                {
+                    CategoryID = c.CategoryID,
+                    CategoryName = c.CategoryName,
+                    Description = c.Description,
+                };
+                return Ok(categoriesView);
             }
-
-            return Ok(categories);
+            catch (Exception ex)
+            {
+                return Content(HttpStatusCode.BadRequest, "No hay nadie?");
+            }
         }
 
-        // PUT: api/Categories/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutCategories(int id, Categories categories)
+        // POST api/Categories
+        [HttpPost]
+        public IHttpActionResult Add(CategoriesView c)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                categoriesLogic.Add(new Categories
+                {
+                    CategoryID = c.CategoryID,
+                    CategoryName = c.CategoryName,
+                    Description = c.Description,
+                });
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return Content(HttpStatusCode.BadRequest, "No se pudo agregar lo sentimos");
             }
 
-            if (id != categories.CategoryID)
+        }
+
+        // POST api/Categories/5
+        [HttpPost]
+        public IHttpActionResult Post(int id, CategoriesView c)
+        {
+            try
             {
-                return BadRequest();
+                Categories category = categoriesLogic.GetOne(id);
+                category.CategoryID = c.CategoryID;
+                category.CategoryName = c.CategoryName;
+                category.Description = c.Description;
+                categoriesLogic.Update(category);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return Content(HttpStatusCode.BadRequest, "No se pudo actualizar, el problema no eres tu soy yo...");
             }
 
-            db.Entry(categories).State = EntityState.Modified;
+        }
+
+        // DELETE api/Categories/5
+        public IHttpActionResult Delete(int id)
+        {
 
             try
             {
-                db.SaveChanges();
+                categoriesLogic.Delete(id);
+                return Ok();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
-                if (!CategoriesExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return Content(HttpStatusCode.BadRequest, "Algo malo paso no se pudo borrar");
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/Categories
-        [ResponseType(typeof(Categories))]
-        public IHttpActionResult PostCategories(Categories categories)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Categories.Add(categories);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = categories.CategoryID }, categories);
-        }
-
-        // DELETE: api/Categories/5
-        [ResponseType(typeof(Categories))]
-        public IHttpActionResult DeleteCategories(int id)
-        {
-            Categories categories = db.Categories.Find(id);
-            if (categories == null)
-            {
-                return NotFound();
-            }
-
-            db.Categories.Remove(categories);
-            db.SaveChanges();
-
-            return Ok(categories);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool CategoriesExists(int id)
-        {
-            return db.Categories.Count(e => e.CategoryID == id) > 0;
         }
     }
 }
