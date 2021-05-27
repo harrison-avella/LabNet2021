@@ -1,7 +1,7 @@
 
   <div class="card p-4 shadow bg-dark text-white"  style="width: 18rem; margin:auto;">
       <h2>Modificar Empleado</h2>
-      <form [formGroup]="formUpdate"(ngSubmit)="onUpdate()">
+      <form [formGroup]="form"(ngSubmit)="onUpdate()">
           <div class="form-group">
               <label class="text" for="txtUpdate">Id: </label>
               <input formControlName="id" type="text" class="form-control" id="txtUpdate" placeholder="Ingrese su id">
@@ -22,7 +22,7 @@
               <label class="text" for="txtCiudad">Ciudad: </label>
               <input formControlName="ciudad" type="text" class="form-control" id="txtCiudad" placeholder="Ingrese su ciudad">
           </div>
-          <button type="submit" class="btn btn-primary mt-2" id="btn-Crear" [disabled]="!this.formUpdate.valid">Modificar</button>
+          <button type="submit" class="btn btn-primary mt-2" id="btn-Crear" [disabled]="!this.form.valid">Modificar</button>
       </form>
   </div>
 

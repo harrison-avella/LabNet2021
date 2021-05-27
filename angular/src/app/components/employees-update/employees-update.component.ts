@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { EmployeesI } from '../../models/Employees';
+import { EmployeesI } from '../../models/employees.model';
 import { EmployeesService } from '../../services/employees.service';
 
 @Component({
@@ -45,7 +45,7 @@ export class EmployeesUpdateComponent implements OnInit {
 
   onUpdate(): void{
     var emp = new EmployeesI();
-    emp.firstName = this.nombreCtrl.value;
+    /*emp.firstName = this.nombreCtrl.value;
     emp.lastName = this.apellidoCtrl.value;
     emp.address = this.direccionCtrl.value;
     emp.city= this.ciudadCtrl.value;
@@ -59,7 +59,7 @@ export class EmployeesUpdateComponent implements OnInit {
           alert(err.error?.ExceptionMessage ?? err.error);
         }
       }
-    );
+    );*/
   }
 }
 

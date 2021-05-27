@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { EmployeesI } from '../../models/employees';
+import { EmployeesI } from '../../models/employees.model';
 import { EmployeesService } from '../../services/employees.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';

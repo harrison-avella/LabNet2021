@@ -1,19 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RegionComponent } from './components/region/region.component';
 import { EmployeesComponent } from './components/employees/employees.component';
-import { RegionUpdateComponent } from './components/region-update/region-update.component';
 import { EmployeesUpdateComponent } from './components/employees-update/employees-update.component';
+import { CategoriesComponent } from './components/categories/categories.component';
 
 const routes: Routes = [
-  {
-    path: 'regions',
-    component: RegionComponent
-  },
-  {
-    path: 'regioUpdate',
-    component: RegionUpdateComponent
-  },
   {
     path: 'employees',
     component: EmployeesComponent
@@ -21,7 +12,11 @@ const routes: Routes = [
   {
     path: 'employeeUpdate/:id',
     component: EmployeesUpdateComponent
-  }
+  },
+  {
+    path: 'categories',
+    component: CategoriesComponent
+  },
 ];
 
 @NgModule({
