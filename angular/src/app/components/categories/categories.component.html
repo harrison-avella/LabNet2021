@@ -1,1 +1,26 @@
-<p>categories works!</p>
+<table class="table table-striped table-dark rounded-lg table-borderless justify-content-sm-center rounded"
+  style="width: auto; margin:auto;">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Aciones</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let item of categories">
+    <tr>
+      <td scope="row">{{item.CategoryID}}</td>
+      <td scope="row">{{item.CategoryName}}</td>
+      <td scope="row">{{item.Description}}</td>
+      <td scope="row">
+        <button type="button" (click)="updateById(item.CategoryID)" class="btn btn-outline-warning m-1">
+          <i-bs name="pencil-fill"></i-bs> Editar
+        </button>
+        <button type="button" (click)="deleteById(item.CategoryID)" class="btn btn-outline-danger m-1">
+          <i-bs name="trash-fill"></i-bs> Eliminar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

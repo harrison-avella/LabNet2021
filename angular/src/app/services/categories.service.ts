@@ -21,33 +21,33 @@ export class CategoriesService {
   getOne(id: Number): Observable<CategoriesI> {
     let category!: Observable<CategoriesI>;
 
-    category = this.http.get<CategoriesI>(environment.api + '/Categories' + id);
+    category = this.http.get<CategoriesI>(environment.api + 'Categories/' + id);
 
     return category;
   }
 
   get(): Observable<CategoriesI[]> {
-    return this.http.get<CategoriesI[]>(environment.api + '/Categories').pipe(
+    return this.http.get<CategoriesI[]>(environment.api + 'Categories/').pipe(
       catchError(this.errorHandler)
     );
   }
 
   post(category: CategoriesI): Observable<CategoriesI> {
-    return this.http.post<CategoriesI>(environment.api + '/Categories', category).pipe(
+    return this.http.post<CategoriesI>(environment.api + 'Categories/', category).pipe(
       catchError(this.errorHandler)
-    );;
+    );
   }
 
   put(category: CategoriesI): Observable<CategoriesI> {
-    return this.http.put<CategoriesI>(environment.api + '/Categories', category).pipe(
+    return this.http.put<CategoriesI>(environment.api + 'Categories/', category).pipe(
       catchError(this.errorHandler)
-    );;
+    );
   }
 
   delete(id: number) {
-    return this.http.delete(environment.api + '/Categories' + id).pipe(
+    return this.http.delete(environment.api + 'Categories/' + id).pipe(
       catchError(this.errorHandler)
-    );;
+    );
   }
 
   private errorHandler(error: HttpErrorResponse) {

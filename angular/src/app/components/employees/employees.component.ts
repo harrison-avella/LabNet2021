@@ -25,7 +25,7 @@ export class EmployeesComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getEmployees()
+    this.getEmployees();
   }
 
   getEmployees(){

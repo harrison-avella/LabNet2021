@@ -12,7 +12,7 @@ import { CategoriesService } from 'src/app/services/categories.service';
 })
 export class CategoriesComponent implements OnInit {
 
-  public categories: CategoriesI[] =[];
+  public categories: CategoriesI[] = [];
   private suscription: Subscription = new Subscription();
 
   constructor(
@@ -21,19 +21,20 @@ export class CategoriesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getCategories();
   }
 
 
-  getCategories(){
+  getCategories() {
     this.suscription.add(
-      this.service.get().subscribe(res=> this.categories = res)
+      this.service.get().subscribe(res => this.categories = res)
     );
   }
 
-  deleteById(id: number){
+  deleteById(id: number) {
     this.service.delete(id).subscribe(
-     ()=> this.ngOnInit(),
-     (error: HttpErrorResponse) => this.toastr.error('Que ha pasao? '+error.message,'Ups!')
+      () => this.ngOnInit(),
+      (error: HttpErrorResponse) => this.toastr.error('Que ha pasao? ' + error.message, 'Ups!')
     )
   }
 

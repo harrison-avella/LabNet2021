@@ -27,7 +27,7 @@ export class EmployeesService{
 
     getEmployees(): Observable<any>
     {
-        return this.http.get<any>(environment.api + 'Employees');
+        return this.http.get<any>(environment.api + 'Employees/');
     }
 }
 
