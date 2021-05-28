@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmployeesComponent } from './components/employees/employees.component';
-import { EmployeesNewComponent } from './components/employees-new/employees-new.component';
 import { EmployeesUpdateComponent } from './components/employees-update/employees-update.component';
 
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
@@ -15,14 +14,18 @@ import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { CategoriesFormComponent } from './components/categories-form/categories-form.component';
+import { EmployeesFormComponent } from './components/employees-form/employees-form.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeesComponent,
-    EmployeesNewComponent,
     EmployeesUpdateComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    CategoriesFormComponent,
+    EmployeesFormComponent
   ],
   imports: [
     FormsModule,

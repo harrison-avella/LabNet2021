@@ -7,11 +7,11 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-employees-new',
-  templateUrl: './employees-new.component.html',
-  styleUrls: ['./employees-new.component.css']
+  selector: 'app-employees-form',
+  templateUrl: './employees-form.component.html',
+  styleUrls: ['./employees-form.component.css']
 })
-export class EmployeesNewComponent implements OnInit {
+export class EmployeesFormComponent implements OnInit {
   form : FormGroup;
 
 
@@ -57,17 +57,6 @@ export class EmployeesNewComponent implements OnInit {
       (error: HttpErrorResponse) => this.toastr.error('No es posible que mal '+error.message,'Me lleva la cachetada')
     );
     }
-
-
-  onUpdate(): void{
-    this.service.patchEmployee(this.form.value.id,this.form.value).subscribe(
-      ()=>{
-        this.toastr.success('Por fin mi heroe.', 'Se edito el esclavo'),
-        this.clean();
-      },
-      (error: HttpErrorResponse) => this.toastr.error('No es posible que mal '+error.message,'Me lleva la cachetada')
-    );
-  }
 
 clean(): void{
   this.form.reset();

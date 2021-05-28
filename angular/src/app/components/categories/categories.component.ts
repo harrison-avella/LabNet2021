@@ -2,8 +2,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { CategoriesI } from 'src/app/models/categories.model';
-import { CategoriesService } from 'src/app/services/categories.service';
+import { CategoriesI } from '../../models/categories.model';
+import { CategoriesService } from '../../services/categories.service';
 
 @Component({
   selector: 'app-categories',

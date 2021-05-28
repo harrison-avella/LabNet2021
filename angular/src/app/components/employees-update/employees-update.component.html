@@ -1,28 +1,28 @@
 
   <div class="card p-4 shadow bg-dark text-white"  style="width: 18rem; margin:auto;">
       <h2>Modificar Empleado</h2>
-      <form [formGroup]="form"(ngSubmit)="onUpdate()">
+      <form [formGroup]="form">
           <div class="form-group">
               <label class="text" for="txtUpdate">Id: </label>
-              <input formControlName="id" type="text" class="form-control" id="txtUpdate" placeholder="Ingrese su id">
+              <input formControlName="Id" type="text" class="form-control" id="txtUpdate" placeholder="Ingrese su id">
           </div>
           <div class="form-group">
               <label class="text" for="txtNombre">Nombre: </label>
-              <input formControlName="nombre" type="text" class="form-control" id="txtNombre" placeholder="Ingrese su nombre">
+              <input formControlName="FirstName" type="text" class="form-control" id="txtNombre" placeholder="Ingrese su nombre">
           </div>
           <div class="form-group">
               <label class="text" for="txtApellido">Apellido: </label>
-              <input formControlName="apellido" type="text" class="form-control" id="txtApellido" placeholder="Ingrese su apellido">
+              <input formControlName="LastName" type="text" class="form-control" id="txtApellido" placeholder="Ingrese su apellido">
           </div>
           <div class="form-group">
               <label class="text" for="txtDireccion">Direccion: </label>
-              <input formControlName="direccion" type="text" class="form-control" id="txtDireccion" placeholder="Ingrese su direccion">
+              <input formControlName="Address" type="text" class="form-control" id="txtDireccion" placeholder="Ingrese su direccion">
           </div>
           <div class="form-group">
               <label class="text" for="txtCiudad">Ciudad: </label>
-              <input formControlName="ciudad" type="text" class="form-control" id="txtCiudad" placeholder="Ingrese su ciudad">
+              <input formControlName="City" type="text" class="form-control" id="txtCiudad" placeholder="Ingrese su ciudad">
           </div>
-          <button type="submit" class="btn btn-primary mt-2" id="btn-Crear" [disabled]="!this.form.valid">Modificar</button>
+          <button type="submit" class="btn btn-primary mt-2" id="btn-Crear" [disabled]="!this.form.valid" (click)="modificar()">Modificar</button>
       </form>
   </div>
 

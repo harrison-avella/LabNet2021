@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment'
+import { environment } from '../../environments/environment';
 import { EmployeesI } from '../models/employees.model'
 
 @Injectable({
@@ -15,9 +15,9 @@ export class EmployeesService{
         return this.http.post(environment.api + 'Employees/', request);
     }
 
-    patchEmployee(id : number,request: EmployeesI )
+    putEmployee(request: EmployeesI)
     {
-        return this.http.put(environment.api + "Employees/" +id, request);
+        return this.http.put(environment.api + "Employees/", request);
     }
 
     deleteEmployee(id: number)
@@ -28,6 +28,10 @@ export class EmployeesService{
     getEmployees(): Observable<any>
     {
         return this.http.get<any>(environment.api + 'Employees/');
+    }
+
+    getEmployee(id: number): Observable<any> {
+      return this.http.get<any>(environment.api + 'Employees/' + id);
     }
 }
 

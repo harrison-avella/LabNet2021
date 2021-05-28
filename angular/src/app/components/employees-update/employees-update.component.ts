@@ -1,5 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { EmployeesI } from '../../models/employees.model';
 import { EmployeesService } from '../../services/employees.service';
 
@@ -11,55 +14,70 @@ import { EmployeesService } from '../../services/employees.service';
 
 export class EmployeesUpdateComponent implements OnInit {
 
+  form = new FormGroup({
+    Id: new FormControl(''),
+    FirstName: new FormControl('', Validators.required),
+    LastName: new FormControl('', Validators.required),
+    Address: new FormControl('', Validators.required),
+    City: new FormControl('', Validators.required),
+  });
 
-  form : FormGroup;
+  constructor(
+      private readonly fb: FormBuilder,
+      private service: EmployeesService,
+      private toastr: ToastrService,
+      private activeRouter: ActivatedRoute,
+    ) { }
 
-  constructor(private readonly fb: FormBuilder,private service: EmployeesService) { }
-
-
-  ngOnInit(): void {
-    this.form = this.fb.group({
-      nombre: new FormControl('',Validators.required),
-      apellido: new FormControl('',Validators.required),
-      direccion: new FormControl('',Validators.required),
-      ciudad: new FormControl('',Validators.required),
-      id: new FormControl('',Validators.required)
-  })
+      //Getters
+  get idCtrl(): AbstractControl {
+    return this.form.get('Id');
   }
-  //Getters
-  get firstNameCtrl(): AbstractControl{
+
+  get firstNameCtrl(): AbstractControl {
     return this.form.get('FirstName');
   }
 
-  get lastNameCtrl(): AbstractControl{
+  get lastNameCtrl(): AbstractControl {
     return this.form.get('LastName');
   }
 
-  get addressCtrl(): AbstractControl{
+  get addressCtrl(): AbstractControl {
     return this.form.get('Address');
   }
 
-  get cityCtrl(): AbstractControl{
+  get cityCtrl(): AbstractControl {
     return this.form.get('City');
   }
 
-  onUpdate(): void{
-    var emp = new EmployeesI();
-    /*emp.firstName = this.nombreCtrl.value;
-    emp.lastName = this.apellidoCtrl.value;
-    emp.address = this.direccionCtrl.value;
-    emp.city= this.ciudadCtrl.value;
-    this.service.updateEmployee(this.idCtrl.value,emp).subscribe(
-      {
-        complete: ()=>{
-          alert("Empleado modificado");
-          this.formUpdate.reset();
+    ngOnInit(): void {
+      let employeeId = this.activeRouter.snapshot.paramMap.get('id');
+      var id = parseInt(employeeId);
+      this.service.getEmployee(id).subscribe((json) => {
+        this.idCtrl.setValue(json.Id);
+        this.firstNameCtrl.setValue(json.FirstName);
+        this.lastNameCtrl.setValue(json.LastName);
+        this.cityCtrl.setValue(json.City);
+        this.addressCtrl.setValue(json.Address);
+      });
+    }
+
+    modificar() {
+      this.service.putEmployee(this.form.value).subscribe(
+        () => {
+          this.toastr.success('¡Empleado modificado con exito!', 'Hecho');
         },
-        error: (err)=>{
-          alert(err.error?.ExceptionMessage ?? err.error);
-        }
-      }
-    );*/
-  }
+        (error: HttpErrorResponse) =>
+          this.toastr.error('No se pudo modificar.', 'Error')
+      );
+    }
+
+
+
+
+
+
+
+
 }
 
