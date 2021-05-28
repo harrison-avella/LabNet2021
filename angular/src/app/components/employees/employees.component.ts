@@ -14,35 +14,35 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class EmployeesComponent implements OnInit {
 
-  public employees: EmployeesI[] =[];
+  public employees: EmployeesI[] = [];
   private suscription: Subscription = new Subscription();
 
   constructor(
     private service: EmployeesService,
- //   private router: Router,
+    //   private router: Router,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
 
   ngOnInit(): void {
     this.getEmployees();
   }
 
-  getEmployees(){
+  getEmployees() {
     this.suscription.add(
-      this.service.getEmployees().subscribe(res=> this.employees = res)
+      this.service.getEmployees().subscribe(res => this.employees = res)
     );
   }
 
-/*  updateById(id: number){
-     this.router.navigate(['employeeUpdate', id]);
-  }
-  */
+  /*  updateById(id: number){
+       this.router.navigate(['employeeUpdate', id]);
+    }
+    */
 
-  deleteById(id: number){
+  deleteById(id: number) {
     this.service.deleteEmployee(id).subscribe(
-     ()=> this.ngOnInit(),
-     (error: HttpErrorResponse) => this.toastr.error('Que ha pasao? '+error.message,'Ups!')
+      () => this.ngOnInit(),
+      (error: HttpErrorResponse) => this.toastr.error('Que ha pasao? ' + error.message, 'Ups!')
     )
   }
 

@@ -71,13 +71,5 @@ export class EmployeesUpdateComponent implements OnInit {
           this.toastr.error('No se pudo modificar.', 'Error')
       );
     }
-
-
-
-
-
-
-
-
 }
 
